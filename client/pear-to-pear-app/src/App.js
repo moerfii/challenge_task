@@ -1,9 +1,11 @@
-import logo from './logo.svg';
+import logo from './assets/test-logo.jpg';
 import './App.css';
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./styles.css";
-
+import {Route, Routes, Link} from 'react-router-dom';
+import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
 
@@ -103,6 +105,19 @@ function App() {
       <div className="login-form">
         <div className="title">Sign In</div>
         {isSubmitted ? <div>Successfully logged in</div> : renderForm}
+      </div>
+      <div className="menu">
+          <ul>
+            <li> <Link to="/">Home</Link> </li>
+            <li> <Link to="/login">Sign in</Link> </li>
+            <li> <Link to="/music">Music</Link> </li>
+          </ul>
+      </div>
+      <div className="App-intro">
+          <Routes>
+              <Route exact path="/" component={MainPage}/>
+              <Route path="/login" component={LoginPage}/>
+          </Routes>
       </div>
     </div>
   );
