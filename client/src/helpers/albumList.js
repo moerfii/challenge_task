@@ -1,8 +1,8 @@
 export const library = [
     {
-      title: "Hyperspace",
+      title: "Thriller",
       image:
-        "https://www.digitalartsonline.co.uk/cmsdata/slideshow/3776245/beck_-_hyperspace.jpg"
+        "https://www.br.de/puls/images/michael-jackson-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=fc716"
     },
     {
       title: "Non Fungible",
@@ -11,33 +11,33 @@ export const library = [
       contract: "0x1C45d483515A92fCDD0aa5eaF03dbdf1B7d6898a",
     },
     {
-      title: "The Unknown",
+      title: "Blood On The Tracks",
       image:
-        "https://350927.smushcdn.com/1388247/wp-content/uploads/2020/11/Unknown-Album-Cover-PP1.jpg?lossy=0&strip=1&webp=1",
+        "https://m.media-amazon.com/images/I/81x8ZJqMm7L._SL1500_.jpg",
     },
     {
-      title: "Get Rich Or Die Tryin'",
-      image: "https://m.media-amazon.com/images/I/61AYpcmBtpL._SY450_.jpg",
+      title: "The Rise And Fall Of Ziggy Stardust",
+      image: "https://upload.wikimedia.org/wikipedia/en/0/01/ZiggyStardust.jpg",
     },
     {
-      title: "Starboy",
+      title: "Dark Side Of The Moon",
       image:
-        "https://i.pinimg.com/originals/49/a0/7a/49a07a20041787942f62dbe900573ecb.jpg",
+        "https://www.br.de/puls/musik/ruhmeshalle/pink-floyd-the-dark-side-of-the-moon-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=c9487",
     },
     {
-      title: "Evolve",
+      title: "Rumours",
       image:
-        "https://external-preview.redd.it/v_5XzwOWnjqrz5gBDfENNoMV9Kl8OAAy3015hcTsVYs.jpg?auto=webp&s=5485881fc8e107c14bca6d16c61fa085a78b70b6",
+        "https://i.scdn.co/image/ab67616d0000b2730001af4f80be77069fc8fd41",
     },
     {
-      title: "Ball Breaker",
+      title: "Exile On Main St.",
       image:
-        "https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/AN5W2E/b0cb0df8c30d479da36443c10bc85b96.jpg/f/ac-dc-ballbreaker-framed-album-cover-30x30cm.jpg",
+        "https://m.media-amazon.com/images/I/81iYdOXSwwL._SL1400_.jpg",
     },
     {
-      title: "Flavors",
+      title: "Abbey Road",
       image:
-        "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/125831034/original/c2e1426823f87d01f7b43085c6b20e61b0736794/create-you-a-special-artistic-album-cover.png",
+        "https://www.tagesspiegel.de/images/members-of-the-beatles-cross-abbey-road-in-london/24883714/1-format43.jpg",
     },
     {
       title: "Shakira",
