@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Album from './pages/Album';
 import './App.css';
@@ -11,9 +11,15 @@ const {Footer, Sider, Content} = Layout;
 const App = () => {
   return(
     <Layout>
-      <Sider width={250}>
+      <Sider width={200} className="sideBar">
         <img src={Logo} alt="Logo" classname="logo"></img>
-        Sider
+        <Link to ="/">
+          <p style={{color: "#1986e6"}}> Home</p>
+        </Link>
+        <Link to ="/album">
+          <p style={{color: "#ffffff"}}> Explore</p>
+        </Link>
+        
       </Sider>
       <Content>
         <Routes>
