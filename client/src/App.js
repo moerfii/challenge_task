@@ -1,43 +1,38 @@
 import React from 'react';
-import {SearchOutlined, DownCircleOutlined} from "@ant-design/icons";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Music from './pages/Music';
+import Account from './pages/Account';
+import Album from './pages/Album';
 import './App.css';
-import logo from "./images/logo.jpg";
 import {Layout} from 'antd';
+import Logo from "./images/Logo.png"; 
 const {Footer, Sider, Content} = Layout;
+ 
 
 
 const App = () => {
   return(
     <Layout>
-        <Sider width={300}>
-        <img src={logo} alt="logo" className="logo"></img>
-        <div className='searchBar' style={{color: "white"}}>
-          <span>Search</span>
-          <SearchOutlined style={{fontSize: "30px"}}/>
-        </div>
-        <Link to="/">
-          <p style={{color:"white"}}>Home</p>
+      <Sider width={250} className="sideBar">
+        <img src={Logo} alt="Logo" classname="logo" style={{marginBottom:"50px"}}></img>
+        <Link to ="/">
+          <p style={{color: "#1986e6"}}> Home</p>
         </Link>
-        <p style={{color: "white"}}>Browse Music</p>
-        <div className='recentPlayed'>
-          <p className='recentTitle'>
-            Recent
-          </p>
-          <div className='install' style={{color: "white"}}>
-            <span>
-              Install
-            </span>
-            <DownCircleOutlined style={{fontSize: "30px"}}/>
-          </div>
-        </div>
+        <Link to ="/music">
+          <p style={{color: "#ffffff"}}> Explore</p>
+        </Link>
+        <Link to ="/account">
+          <p style={{color: "#ffffff"}}> My Account</p>
+        </Link>
+        
       </Sider>
       <Content>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/music" element={<Music />} />
+          <Route path="/album" element={<Album />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </Content>
 

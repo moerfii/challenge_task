@@ -31,3 +31,22 @@
   color: white;
   transform: scale(1.05);
 }
+
+.purchaseButtonHome {
+  padding: 10px;
+  background-color: #1d22b9;
+  width: 90px;
+  color:white;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+}
+
+.purchaseButtonHome:hover {
+  cursor: pointer;
+  transform: scale(1.05);;
+}
