@@ -5,15 +5,16 @@ contract Abo{
     uint money_pool;
     bool is_active;
     
-    mapping (id => address) artist; 
+    //mapping (uint => address) artist_address;
 
 
-    uint Arists[2] = [0xF62b6fec19BCcDD2C0f9a881f1473A756dC91012, 0x5E4047654775631C306750B04E55B31cd3c94855];
-    uint counts[2] = [5,10];
+    // just for testing
+    address[] artists = [0xF62b6fec19BCcDD2C0f9a881f1473A756dC91012, 0x5E4047654775631C306750B04E55B31cd3c94855];
+    uint[] clicks = [5,10];
 
 
-    constructor() public {
-        time_horizon = block.timestamp + 20 seconds; // no idea if public private 
+    constructor() public { // no idea if public private;
+        time_horizon = block.timestamp + 20 seconds; // change this to end of month
         is_active = true;
         money_pool = 1000 wei;
     }
@@ -28,7 +29,9 @@ contract Abo{
         return is_active;
     }
 
-    function payout(address[] artists, uint[] clicks) public {
+    function payout() public payable{
+        // input for this function will be two lists or a dict coming from frontend artist id's and counts
+        // convert them to internal representation and use mapping to get artists addresses
         uint count_payouts = artists.length;
         uint amount_gas_for_payouts = count_payouts * 21000;
         uint amount_left_for_payouts = money_pool - amount_gas_for_payouts;
@@ -40,7 +43,7 @@ contract Abo{
 
         for (uint i=0; i < artists.length; i++) {
             uint artist_clicks = clicks[i] * payout_amount_per_click;
-            artists[i].transfer(artist_clicks);
+            payable(artists[i]).transfer(artist_clicks);
         }
 
 
