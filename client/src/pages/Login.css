@@ -20,8 +20,8 @@
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
+    background: #3f504a;
+    border: 1px solid #3b4d47;
     color: #fff;
     padding: 10px 20px;
   }
@@ -53,6 +53,7 @@
   .title {
     font-size: 25px;
     margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.589);
   }
   
   .input-container {
