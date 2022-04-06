@@ -5,6 +5,7 @@ import Music from './pages/Music';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import Album from './pages/Album';
+import About from './pages/About';
 import Player from './helpers/Player';
 import './App.css';
 import {Layout} from 'antd';
@@ -14,7 +15,7 @@ const {Footer, Sider, Content} = Layout;
 
 const App = () => {
   
-  if(window.location.pathname === "/login"  || window.location.pathname === "/"){
+  if(window.location.pathname === "/login"  || window.location.pathname === "/" || window.location.pathname === "/about"){
     return(
       <Layout>
       <Layout>
@@ -41,15 +42,14 @@ const App = () => {
             <Route path="/account" element={<Account />} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Navigate replace to="/login"/>} />
+            <Route path="/about" element={<About />} />
 
             
           </Routes>
         </Content>
 
       </Layout>
-      <Footer className='footer'>
-        <Player />
-      </Footer>
+     
     </Layout>
 
     )
@@ -80,6 +80,7 @@ const App = () => {
             <Route path="/account" element={<Account />} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Navigate replace to="/login"/>} />
+            <Route path="/about" element={<About />} />
 
             
           </Routes>

@@ -95,11 +95,15 @@ const Login = () => {
   
     return (
         <div className="app">
+            
           <div className="login-form">
             <div className="title">Sign In</div>
             {isSubmitted ? window.location.href="/home" : renderForm}
           </div>
+          
           </div>
+           
+          
         
       );
     }
