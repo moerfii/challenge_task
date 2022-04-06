@@ -19,8 +19,20 @@ const Login = () => {
     },
     {
       username: "Jason",
-      password: "222"
-    }
+      password: "111"
+    },
+    {
+        username: "Lynn",
+        password: "111"
+      },
+      {
+        username: "Dario",
+        password: "111"
+      },
+      {
+        username: "Ben",
+        password: "111"
+      }
   ];
 
   const errors = {
@@ -82,10 +94,11 @@ const Login = () => {
 
   
     return (
-            
+        <div className="app">
           <div className="login-form">
             <div className="title">Sign In</div>
             {isSubmitted ? window.location.href="/home" : renderForm}
+          </div>
           </div>
         
       );
