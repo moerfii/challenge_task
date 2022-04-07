@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {Tabs} from "antd";
-import { Spin, Space } from 'antd';
 import { library } from '../helpers/albumList';
+import Loader from '../helpers/Loader';
 
 const {TabPane} = Tabs;
 
@@ -18,16 +18,6 @@ const Home = () => {
       setLoading(false)
     }, 3000);
   }, []);
-
-
-  function Loader(){
-    return(
-      <Space size="middle" style={{  justifyContent: 'center',
-        display: 'flex'}}>
-        <Spin size="large" />
-      </Space>
-    )
-  }
 
   
   return(

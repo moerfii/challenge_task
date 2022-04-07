@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import database from '../data/data';
-
+import Loader from '../helpers/Loader';
 
 
 
@@ -10,6 +10,7 @@ const Login = () => {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const errors = {
     uname: "invalid username",
@@ -17,6 +18,11 @@ const Login = () => {
   };
 
   const handleSubmit = (event) => {
+    setLoading(true);
+    setTimeout(function () {
+       setLoading(false);
+    }, 2000);
+
     //Prevent page reload
     event.preventDefault();
 
@@ -31,8 +37,8 @@ const Login = () => {
         // Invalid password
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
-        
         setIsSubmitted(true);
+        
       }
     } else {
       // Username not found
@@ -49,6 +55,7 @@ const Login = () => {
   // JSX code for login form
   const renderForm = (
     <div className="form">
+      {loading ? <Loader/> :
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
@@ -64,6 +71,7 @@ const Login = () => {
           <input type="submit" />
         </div>
       </form>
+      }
     </div>
   );
 
@@ -74,7 +82,7 @@ const Login = () => {
             
           <div className="login-form">
             <div className="title">Sign In</div>
-            {isSubmitted ? window.location.href="/home" : renderForm}
+            {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderForm)}
           </div>
           
           </div>
