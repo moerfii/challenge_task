@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
-import { Link, Navigate, Route, useHistory } from 'react-router-dom';
-import App from '../App';
+import database from '../data/data';
+
 
 
 
@@ -10,30 +10,6 @@ const Login = () => {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // User Login info
-  const database = [
-    {
-      username: "Dave",
-      password: "111"
-    },
-    {
-      username: "Jason",
-      password: "111"
-    },
-    {
-        username: "Lynn",
-        password: "111"
-      },
-      {
-        username: "Dario",
-        password: "111"
-      },
-      {
-        username: "Ben",
-        password: "111"
-      }
-  ];
 
   const errors = {
     uname: "invalid username",

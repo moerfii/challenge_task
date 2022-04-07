@@ -60,13 +60,16 @@ const App = () => {
         <Sider width={250} className="sideBar">
           <img src={Logo} alt="Logo" classname="logo" style={{marginBottom:"50px"}}></img>
           <Link to ="/home">
-            <p style={{color: "#ffffff"}}> Home</p>
+            <p style={window.location.pathname === "/home"? {color: "#1d2ab9"} : 
+              {color: "#ffffff"}}> Home</p>
           </Link>
           <Link to ="/music">
-            <p style={{color: "#ffffff"}}> Explore</p>
+            <p style={window.location.pathname === "/music"? {color: "#1d2ab9"} : 
+              {color: "#ffffff"}}> Explore</p>
           </Link>
           <Link to ="/account">
-            <p style={{color: "#ffffff"}}> My Account</p>
+            <p style={window.location.pathname === "/account"? {color: "#1d2ab9"} : 
+              {color: "#ffffff"}}> My Account</p>
           </Link>
           
         </Sider>

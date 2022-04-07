@@ -46,7 +46,33 @@
   transition: transform 0.4s;
 }
 
+
+
 .purchaseButtonHome:hover {
+  cursor: pointer;
+  transform: scale(1.05);;
+}
+
+.subscriptionButton {
+  padding: 15px;
+  background-color: #2429b9; 
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+  width: 200px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 45%;
+  margin-right: 50%;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
+.subscriptionButton:hover {
   cursor: pointer;
   transform: scale(1.05);;
 }
