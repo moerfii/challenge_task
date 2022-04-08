@@ -70,6 +70,24 @@
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "artist_ids",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "clicks",
+				"type": "uint256[]"
+			}
+		],
+		"name": "payout",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "regist_user",
 		"outputs": [],
