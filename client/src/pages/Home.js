@@ -4,6 +4,7 @@ import "./Home.css";
 import {Tabs} from "antd";
 import { library } from '../helpers/albumList';
 import Loader from '../helpers/Loader';
+import Web3 from 'web3';
 
 const {TabPane} = Tabs;
 
@@ -14,16 +15,21 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    setTimeout(function () {
-      setLoading(false)
-    }, 3000);
+    async function load() {
+      const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+      const accounts = await web3.eth.requestAccounts();
+
+      alert(accounts[0]);
+      setLoading(false);
+    }
+    load();
   }, []);
 
   
   return(
     <>
     <Tabs defaultActiveKey="1" centered>
-      <TabPane tab="My Music" key="1">
+      <TabPane tab={subscribed ? "My Music" : "Music"} key="1">
         <h1 className='featuredTitle'>
           Pear-to-Pear Music
         </h1>
