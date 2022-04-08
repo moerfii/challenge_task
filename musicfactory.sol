@@ -1,45 +1,86 @@
 pragma solidity >=0.8.0 <0.9.0;
 
+import "./SafeMath.sol";
+
+
+
 contract MusicFactory {
 
-    uint public artist_id = 0;
-    uint public user_id = 0;
+    using SafeMath for uint256;
 
+    uint money_pool;
+    uint user_id = 0;
+    uint requiredAmount = 0.001 ether;
 
     struct Artist {
     /// everything we need to know about an artist
         string name;
-        uint id;
         address _address; /// the eth address
 
     }
 
     struct User {
     /// everything we need to know about a user
-        string name;
         uint id;
-        address _address; /// eth address
-        Abo abo;
+        address _address;
+        uint time_horizon; /// eth address
+        bool is_active;
 
     }
 
     Artist[] private artists;
     User[] private users;
-    Abo[] private abos;
+
+    mapping (address=>uint) private AddressToUserid;
 
 
-    function register_artist(string name, address artist_address){
+    event newArtist(
+        string name,
+        address _address
+    );
+
+    event newUser(
+        address _address,
+        bool is_active
+    );
+
+    event newAbo(
+        address _address,
+        uint time_horizon,
+        bool is_active
+    );
+
+    // check if memory or calldata
+    function register_artist(string memory name) public {
         /// check if artist is already registered ?
-        /// check in excel sheet if artist is really artist :D
-
-        artists.push(Artist(name, artist_id, artist_address);
-        artist_id = artist_id.add(1); /// increment artist_id and prevent overflow
+        /// check in excel sheet if artist is really artist :D (oracle)
+        artists.push(Artist(name, msg.sender));
+        emit newArtist(name, msg.sender);
     }
+
+    function regist_user() public {
+        users.push(User(user_id, msg.sender, 0, false));
+        AddressToUserid[msg.sender] = user_id;
+        user_id.add(1);
+        emit newUser(msg.sender, false);
+    }
+
+    function buy_membership() public payable {
+        require(msg.value == requiredAmount);
+        money_pool += msg.value;
+        uint current_userid = AddressToUserid[msg.sender];
+        User storage current_user = users[current_userid];
+        current_user.time_horizon = block.timestamp + 30 days; //
+        current_user.is_active = true;
+        emit newAbo(msg.sender, current_user.time_horizon, current_user.is_active);
+    }
+
+    /*
 
     function register_user(string name, address user_address){
         /// do we also need a password?
 
-         users.push(User(name, user_id, user_address, 0); //set abo to 0 at the beginning
+         users.push(User(name, user_id, user_address, 0)); //set abo to 0 at the beginning
          user_id = user_id.add(1);
     }
 
@@ -54,26 +95,23 @@ contract MusicFactory {
         ///is there an efficient way to do this in solidity?
     }
 
-    function buy_membership(uint user_id, uint money){
-        User user = users[user_id];
-        uint end_of_month = 0; // compute end of month somehow
-        user.abo = Abo(end_of_month, true, money); // how to money? does the abo has a wallet? or make one big wallet from musicfactory and every payment from there?
 
-    }
 
     function extend_membership(uint user_id, uint money){
         User user = users[user_id];
         if (user.abo == 0) {
             // return not possible or something
         } else {
-            uint end_of_month = 0 // compute end of month somehow
+            uint end_of_month = 0; // compute end of month somehow
             user.abo.time_horizon = end_of_month;
             user.abo.money_pool = money;
-            user.abo.is_active = true
+            user.abo.is_active = true;
         }
 
 
     }
+
+    */
 
     // do we even need cancel membership when abos are running for one month?
 
