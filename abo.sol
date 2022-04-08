@@ -9,7 +9,7 @@ contract Abo{
 
 
     // just for testing
-    address[] artists = [0xF62b6fec19BCcDD2C0f9a881f1473A756dC91012, 0x5E4047654775631C306750B04E55B31cd3c94855];
+    address[] artists = [0x9dC23937b166B089ff0DD9a6733cDd88BAbC1A8a, 0x5E4047654775631C306750B04E55B31cd3c94855];
     uint[] clicks = [5,10];
 
 
@@ -29,10 +29,11 @@ contract Abo{
         return is_active;
     }
 
-    function payout() public payable{
+    function payout(address[] memory artist_ids, uint[] memory clicks) public payable{
         // input for this function will be two lists or a dict coming from frontend artist id's and counts
         // convert them to internal representation and use mapping to get artists addresses
-        uint count_payouts = artists.length;
+        uint oneWei = 1 wei;
+        uint count_payouts = artist_ids.length;
         uint amount_gas_for_payouts = count_payouts * 21000;
         uint amount_left_for_payouts = money_pool - amount_gas_for_payouts;
         uint total_clicks = 0;
@@ -41,11 +42,11 @@ contract Abo{
         }
         uint payout_amount_per_click = amount_left_for_payouts/ total_clicks;
 
-        for (uint i=0; i < artists.length; i++) {
-            uint artist_clicks = clicks[i] * payout_amount_per_click;
-            payable(artists[i]).transfer(artist_clicks);
+        for (uint i=0; i < artist_ids.length; i++) {
+            uint artist_salary = clicks[i] * payout_amount_per_click;
+            //address payable addr = artist_ids[i];
+            uint salary_wei = artist_salary * oneWei;
+            payable(artist_ids[i]).transfer(salary_wei);
         }
-
-
     }
 }
