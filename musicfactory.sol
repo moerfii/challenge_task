@@ -9,9 +9,13 @@ contract MusicFactory is Ownable {
 
     using SafeMath for uint256;
 
-    uint money_pool;
+    uint current_money_pool;
+    uint next_money_pool;
     uint user_id = 0;
-    uint requiredAmount = 0.001 ether;
+    uint abo_price = 10 gwei;
+    uint payout_period = 10; // 190k blocks = more or less 1 month
+    uint block_number_start_period = block.number;
+    address pear_owner = msg.sender;
 
     struct Artist {
     /// everything we need to know about an artist
@@ -62,13 +66,17 @@ contract MusicFactory is Ownable {
     function regist_user() public {
         users.push(User(user_id, msg.sender, 0, false));
         AddressToUserid[msg.sender] = user_id;
-        user_id.add(1);
+        user_id = user_id.add(1);
         emit newUser(msg.sender, false);
     }
 
     function buy_membership() public payable {
-        require(msg.value == requiredAmount);
-        money_pool += msg.value;
+        require(msg.value == abo_price);
+        uint blocks_passsed_since_start_period = block.number - block_number_start_period;
+        uint money_pool_ratio = 100*blocks_passsed_since_start_period/payout_period;
+        uint future_money = (abo_price * money_pool_ratio) / 100;
+        current_money_pool = current_money_pool.add(abo_price-future_money);
+        next_money_pool = next_money_pool.add(future_money);
         uint current_userid = AddressToUserid[msg.sender];
         User storage current_user = users[current_userid];
         current_user.time_horizon = block.timestamp + 30 days; //
@@ -83,7 +91,7 @@ contract MusicFactory is Ownable {
         uint oneWei = 1 wei;
         uint count_payouts = artist_ids.length;
         uint amount_gas_for_payouts = count_payouts * 21000;
-        uint amount_left_for_payouts = money_pool - amount_gas_for_payouts;
+        uint amount_left_for_payouts = current_money_pool - amount_gas_for_payouts;
         uint total_clicks = 0;
         for (uint i = 0; i < clicks.length; i++) {
             total_clicks += clicks[i];
@@ -96,15 +104,59 @@ contract MusicFactory is Ownable {
             uint salary_wei = artist_salary * oneWei;
             payable(artist_ids[i]).transfer(salary_wei);
         }
+
+        current_money_pool = next_money_pool;
+        next_money_pool = 0;
+        block_number_start_period = block.number;
+
+        uint leftovers_brutto = current_money_pool - address(this).balance;
+        uint leftovers_netto = leftovers_brutto - 21000;
+        payable(pear_owner).transfer(leftovers_netto);
     }
 
-    /*
 
+    function set_abo_price(uint price) public onlyOwner{
+        abo_price = price;
+    }
+
+    function set_payout_period(uint number_of_blocks) public onlyOwner{
+        payout_period = number_of_blocks;
+    }
+
+    function get_current_moneypool() public view returns(uint) {
+        return current_money_pool;
+    }
+
+    function get_next_moneypool() public view returns(uint) {
+        return next_money_pool;
+    }
+
+    function get_block_number_start_period() public view returns(uint) {
+        return block_number_start_period;
+    }
+
+    function get_abo_price() public view returns(uint) {
+        return abo_price;
+    }
+
+    function get_user_id() public view returns(uint) {
+        return user_id;
+    }
+
+
+
+
+    /*
+    
     function _validate_abo() public {
     if (time_horizon <= block.timestamp) {
         is_active = false;
         }
     }
+
+
+
+
 
     function register_user(string name, address user_address){
         /// do we also need a password?
