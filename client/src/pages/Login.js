@@ -1,10 +1,9 @@
 import React, { useState }from 'react';
 import database from '../data/data';
 import Loader from '../helpers/Loader';
-
-
-
+import { regist_user, get_user_id } from '../web3/Web3Service';
 import "./Login.css";
+
 
 const Login = () => {
   // React States
@@ -16,6 +15,24 @@ const Login = () => {
     uname: "invalid username",
     pass: "invalid password"
   };
+
+  const test_contract_method = () => {
+    get_user_id().then((tx) => {
+      console.log(tx);
+      
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  const register = () => {
+    regist_user().then((tx) => {
+      console.log(tx);
+
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
   const handleSubmit = (event) => {
     setLoading(true);
@@ -67,6 +84,10 @@ const Login = () => {
           <input type="password" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
+        <div className="input-container">
+          <label>Artist? </label>
+          <input type="checkbox" name="artist" />
+        </div>
         <div className="button-container">
           <input type="submit" />
         </div>
@@ -79,9 +100,9 @@ const Login = () => {
   
     return (
         <div className="app">
-            
+          <div className="title">Sign In</div>
+          <button onClick={() => test_contract_method()}>Test transaction</button>
           <div className="login-form">
-            <div className="title">Sign In</div>
             {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderForm)}
           </div>
           

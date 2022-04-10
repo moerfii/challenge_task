@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {init} from './web3/Web3Service';
 import { Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
 import Home from "./pages/Home";
 import Music from './pages/Music';
@@ -13,7 +14,12 @@ import Logo from "./images/Logo.png";
 const {Footer, Sider, Content} = Layout;
 
 
+
 const App = () => {
+
+  useEffect(() => {
+    console.log("App started");
+  }, []);
   
   if(window.location.pathname === "/login"  || window.location.pathname === "/" || window.location.pathname === "/about"){
     return(
