@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {Tabs} from "antd";
-import { library } from '../helpers/albumList';
+import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
 import Web3 from 'web3';
 

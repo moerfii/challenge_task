@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {init} from './web3/Web3Service';
+import { save_local_storage, read_local_storage } from './helpers/localStorage';
 import { Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
 import Home from "./pages/Home";
 import Music from './pages/Music';
@@ -18,20 +19,20 @@ const {Footer, Sider, Content} = Layout;
 const App = () => {
 
   useEffect(() => {
+    if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
+      save_local_storage("authenticated", 0);
+    }
     console.log("App started");
   }, []);
   
-  if(window.location.pathname === "/login"  || window.location.pathname === "/" || window.location.pathname === "/about"){
+  if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
     return(
       <Layout>
       <Layout>
         <Sider width={250} className="sideBar">
           <img src={Logo} alt="Logo" classname="logo" style={{marginBottom:"50px"}}></img>
           <Link to ="/login">
-            <p style={{color: "#ffffff"}}> Login</p>
-          </Link>
-          <Link to ="/register">
-            <p style={{color: "#ffffff"}}> Register</p>
+            <p style={{color: "#ffffff"}}> Start</p>
           </Link>
           <Link to ="/about">
             <p style={{color: "#ffffff"}}> About</p>
@@ -39,18 +40,14 @@ const App = () => {
           
         </Sider>
         <Content>
-          <Routes>
-            
-            
-            <Route path="/home" element={<Home />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/album" element={<Album />} />
-            <Route path="/account" element={<Account />} />
+          <Routes>    
+            <Route path="/home" element={<Navigate replace to="/login"/>} />
+            <Route path="/music" element={<Navigate replace to="/login"/>} />
+            <Route path="/album" element={<Navigate replace to="/login"/>} />
+            <Route path="/account" element={<Navigate replace to="/login"/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Navigate replace to="/login"/>} />
             <Route path="/about" element={<About />} />
-
-            
           </Routes>
         </Content>
 
@@ -87,7 +84,7 @@ const App = () => {
             <Route path="/music" element={<Music />} />
             <Route path="/album" element={<Album />} />
             <Route path="/account" element={<Account />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Navigate replace to="/home"/>} />
             <Route path="/" element={<Navigate replace to="/login"/>} />
             <Route path="/about" element={<About />} />
 

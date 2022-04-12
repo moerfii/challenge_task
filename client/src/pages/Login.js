@@ -1,9 +1,12 @@
 import React, { useState }from 'react';
 import database from '../data/data';
 import Loader from '../helpers/Loader';
-import { register_user, get_artists, _validate_abo } from '../web3/Web3Service';
+import { register_user, get_artists, register_artist } from '../web3/Web3Service';
+import { save_local_storage, read_local_storage } from '../helpers/localStorage';
 import "./Login.css";
+import {Tabs} from "antd";
 
+const {TabPane} = Tabs;
 
 const Login = () => {
   // React States
@@ -17,7 +20,7 @@ const Login = () => {
   };
 
   const test_contract_method = () => {
-    _validate_abo().then((tx) => {
+      get_artists().then((tx) => {
       console.log(tx);
       
     }).catch((error) => {
@@ -54,6 +57,7 @@ const Login = () => {
         // Invalid password
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
+        save_local_storage("authenticated", 1);
         setIsSubmitted(true);
         
       }
@@ -70,7 +74,7 @@ const Login = () => {
     );
 
   // JSX code for login form
-  const renderForm = (
+  const renderFormLogin = (
     <div className="form">
       {loading ? <Loader/> :
       <form onSubmit={handleSubmit}>
@@ -84,10 +88,6 @@ const Login = () => {
           <input type="password" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
-        <div className="input-container">
-          <label>Artist? </label>
-          <input type="checkbox" name="artist" />
-        </div>
         <div className="button-container">
           <input type="submit" />
         </div>
@@ -96,22 +96,82 @@ const Login = () => {
     </div>
   );
 
+  const renderFormRegister = (
+    <div className="form">
+      {loading ? <Loader/> :
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>Username </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>Password </label>
+          <input type="password" name="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="button-container">
+          <input type="submit"/>
+        </div>
+      </form>
+      }
+    </div>
+  );
+
+  const renderFormRegisterArtist = (
+    <div className="form">
+      {loading ? <Loader/> :
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>Name of Artist </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>Password </label>
+          <input type="password" name="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="button-container">
+          <input type="submit"/>
+        </div>
+      </form>
+      }
+    </div>
+  );
 
   
     return (
-        <div className="app">
-          <div className="title">Sign In</div>
-          <button onClick={() => test_contract_method()}>Test transaction</button>
-          <div className="login-form">
-            {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderForm)}
+      <Tabs defaultActiveKey="1" centered>
+        <TabPane tab="Login" key="1">
+          <div className="app">
+            <div className="title">Login</div>
+            <button onClick={() => console.log(read_local_storage("authenticated"))}>Test transaction</button>
+            <div className="login-form">
+              {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormLogin)}
+            </div>
+            <div style={{color:"white"}}>New here? Register with a new account.</div>
           </div>
-          
+        </TabPane>
+        <TabPane tab="Register" key="2">
+          <div className="app">
+            <div className="title">Register</div>
+            <div className="login-form">
+              {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormRegister)}
+            </div>
           </div>
-           
-          
-        
+        </TabPane>
+        <TabPane tab="Register Artist" key="3">
+          <div className="app">
+            <div className="title">Register Artist</div>
+            <div className="login-form">
+              {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormRegisterArtist)}
+            </div>
+          </div>
+        </TabPane>
+      </Tabs>
       );
-    }
+}
 
     
 
