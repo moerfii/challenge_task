@@ -40,13 +40,3 @@ jobs:
           BCP_REGISTRATION_BRANCH=$(node getBranchPercent 0)
           echo $BCP_REGISTRATION_BRANCH
           echo "BCP_REGISTRATION_BRANCH=$BCP_REGISTRATION_BRANCH" >> $GITHUB_ENV
-          
-      - name: Create coverage badge
-        uses: schneegans/dynamic-badges-action@v1.0.0
-        with:
-          auth: ${{ secrets.GIST_SECRET }}
-          gistID: b5192885bc32555e8fe9c0fd99b1acf1
-          filename: bcp_registration_branch_coverage.json
-          label: BCP_Registration Branch Coverage
-          message: ${{env.BCP_REGISTRATION_BRANCH}}
-          color: green

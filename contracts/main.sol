@@ -3,32 +3,25 @@ pragma solidity >=0.8.0 <0.9.0;
 import "./SafeMath.sol";
 import "./Ownable.sol";
 
-
-
 contract MusicFactory is Ownable {
 
     using SafeMath for uint256;
 
     uint current_money_pool;
     uint next_money_pool;
-    uint user_id = 0;
-    uint abo_price = 10 gwei;
-    uint payout_period = 10; // 190k blocks = more or less 1 month
-    uint block_number_start_period = block.number;
-    address pear_owner = msg.sender;
+    uint abo_price                      = 10 gwei;
+    uint payout_period                  = 10; // 190k blocks = more or less 1 month
+    uint block_number_start_period      = block.number;
+    address pear_owner                  = msg.sender;
 
     struct Artist {
-    /// everything we need to know about an artist
+        bool exists;
         string name;
-        address _address; /// the eth address
-
     }
 
     struct User {
-    /// everything we need to know about a user
-        uint id;
-        address _address;
-        uint time_horizon; /// eth address
+        bool exists;
+        uint time_horizon;
         bool is_active;
 
     }
@@ -36,7 +29,8 @@ contract MusicFactory is Ownable {
     Artist[] private artists;
     User[] private users;
 
-    mapping (address=>uint) private AddressToUserid;
+    mapping (address=>User) private AddressToUser;
+    mapping (address=>Artist) private AddressToArtist;
 
 
     event newArtist(
@@ -57,16 +51,17 @@ contract MusicFactory is Ownable {
 
     // check if memory or calldata
     function register_artist(string memory name) public {
-        /// check if artist is already registered ?
+        require(!AddressToArtist[msg.sender].exists);
+        AddressToArtist[msg.sender] = Artist(true, name);
         /// check in excel sheet if artist is really artist :D (oracle)
-        artists.push(Artist(name, msg.sender));
+        artists.push(AddressToArtist[msg.sender]);
         emit newArtist(name, msg.sender);
     }
 
-    function regist_user() public {
-        users.push(User(user_id, msg.sender, 0, false));
-        AddressToUserid[msg.sender] = user_id;
-        user_id = user_id.add(1);
+    function register_user() public {
+        require(!AddressToUser[msg.sender].exists);
+        AddressToUser[msg.sender] = User(true, 0, false);
+        users.push(AddressToUser[msg.sender]);
         emit newUser(msg.sender, false);
     }
 
@@ -77,15 +72,14 @@ contract MusicFactory is Ownable {
         uint future_money = (abo_price * money_pool_ratio) / 100;
         current_money_pool = current_money_pool.add(abo_price-future_money);
         next_money_pool = next_money_pool.add(future_money);
-        uint current_userid = AddressToUserid[msg.sender];
-        User storage current_user = users[current_userid];
+        User storage current_user = AddressToUser[msg.sender];
         current_user.time_horizon = block.timestamp + 30 days; //
         current_user.is_active = true;
         emit newAbo(msg.sender, current_user.time_horizon, current_user.is_active);
     }
 
 
-        function payout(address[] memory artist_ids, uint[] memory clicks) public payable onlyOwner {
+    function payout(address[] memory artist_ids, uint[] memory clicks) public payable onlyOwner {
         // input for this function will be two lists or a dict coming from frontend artist id's and counts
         // convert them to internal representation and use mapping to get artists addresses
         uint oneWei = 1 wei;
@@ -114,7 +108,14 @@ contract MusicFactory is Ownable {
         payable(pear_owner).transfer(leftovers_netto);
     }
 
+    function _validate_abo() public onlyOwner {
+        if (AddressToUser[msg.sender].time_horizon <= block.timestamp) {
+            User storage current_user = AddressToUser[msg.sender];
+            current_user.is_active = false;
+            }
+        }
 
+    
     function set_abo_price(uint price) public onlyOwner{
         abo_price = price;
     }
@@ -139,34 +140,15 @@ contract MusicFactory is Ownable {
         return abo_price;
     }
 
-    function get_user_id() public view returns(uint) {
-        return user_id;
+    function get_time_horizon() public view returns(uint) {
+        return AddressToUser[msg.sender].time_horizon;
     }
 
-
-
-
+    function get_artists() public view returns(Artist[] memory) {
+        return artists;
+    }
     /*
     
-    function _validate_abo() public {
-    if (time_horizon <= block.timestamp) {
-        is_active = false;
-        }
-    }
-
-
-
-
-
-    function register_user(string name, address user_address){
-        /// do we also need a password?
-
-         users.push(User(name, user_id, user_address, 0)); //set abo to 0 at the beginning
-         user_id = user_id.add(1);
-    }
-
-    // we can remove an artist from artists but leads to a hole in the array
-
     function remove_artist(uint id) {
 
         ///is there an efficient way to do this in solidity?
@@ -175,8 +157,6 @@ contract MusicFactory is Ownable {
     function remove_user(uint id) {
         ///is there an efficient way to do this in solidity?
     }
-
-
 
     function extend_membership(uint user_id, uint money){
         User user = users[user_id];
@@ -193,8 +173,6 @@ contract MusicFactory is Ownable {
     }
 
     */
-
-    // do we even need cancel membership when abos are running for one month?
 
 
 
