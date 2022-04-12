@@ -9,8 +9,11 @@ __pycache__/
 #node.js
 node_modules/
 
-#node.js
+#artifacts
 artifacts/
+
+#test contract
+test.sol
 
 # Distribution / packaging
 .Python

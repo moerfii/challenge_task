@@ -1,7 +1,7 @@
 import React, { useState }from 'react';
 import database from '../data/data';
 import Loader from '../helpers/Loader';
-import { regist_user, get_user_id } from '../web3/Web3Service';
+import { register_user, get_artists, _validate_abo } from '../web3/Web3Service';
 import "./Login.css";
 
 
@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   const test_contract_method = () => {
-    get_user_id().then((tx) => {
+    _validate_abo().then((tx) => {
       console.log(tx);
       
     }).catch((error) => {
@@ -26,7 +26,7 @@ const Login = () => {
   }
 
   const register = () => {
-    regist_user().then((tx) => {
+    register_user().then((tx) => {
       console.log(tx);
 
     }).catch((error) => {
