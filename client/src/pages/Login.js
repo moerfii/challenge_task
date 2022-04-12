@@ -16,11 +16,12 @@ const Login = () => {
 
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
+    tx: "tranasction failed, please try again."
   };
 
   const test_contract_method = () => {
-      get_artists().then((tx) => {
+    get_artists().then((tx) => {
       console.log(tx);
       
     }).catch((error) => {
@@ -29,11 +30,32 @@ const Login = () => {
   }
 
   const register = () => {
-    register_user().then((tx) => {
+      register_user().then((tx) => {
       console.log(tx);
+      setLoading(false);
+      save_local_storage("authenticated", 1);
+      setIsSubmitted(true);
 
     }).catch((error) => {
       console.log(error);
+      setErrorMessages({ name: "pass", message: errors.tx });
+      setLoading(false);
+    });
+  }
+
+  const register_a = (name) => {
+      console.log(name);
+      console.log(typeof(name));
+      register_artist(name).then((tx) => {
+      console.log(tx);
+      setLoading(false);
+      save_local_storage("authenticated", 1);
+      setIsSubmitted(true);
+
+    }).catch((error) => {
+      console.log(error);
+      setErrorMessages({ name: "pass", message: errors.tx });
+      setLoading(false);
     });
   }
 
@@ -67,6 +89,36 @@ const Login = () => {
     }
   };
 
+  const handleSubmitRegister = async (event) => {
+    setLoading(true);
+    
+    //Prevent page reload
+    event.preventDefault();
+
+    //var { uname, pass } = document.forms[0];
+
+    /*check if username exists already
+    
+    */
+    register();
+  };
+
+  const handleSubmitRegisterArtist = async (event) => {
+    setLoading(true);
+    
+    //Prevent page reload
+    event.preventDefault();
+    var {artist_name, pass} = document.forms[1];
+
+    //var { uname, pass } = document.forms[0];
+
+    /*check if username exists already
+    
+    */
+    register_a(artist_name.value);
+  };
+
+
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
@@ -99,7 +151,7 @@ const Login = () => {
   const renderFormRegister = (
     <div className="form">
       {loading ? <Loader/> :
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitRegister}>
         <div className="input-container">
           <label>Username </label>
           <input type="text" name="uname" required />
@@ -121,10 +173,10 @@ const Login = () => {
   const renderFormRegisterArtist = (
     <div className="form">
       {loading ? <Loader/> :
-      <form onSubmit={handleSubmit}>
+      <form id="form_artist" onSubmit={handleSubmitRegisterArtist}>
         <div className="input-container">
           <label>Name of Artist </label>
-          <input type="text" name="uname" required />
+          <input type="text" name="artist_name" required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
@@ -146,7 +198,7 @@ const Login = () => {
         <TabPane tab="Login" key="1">
           <div className="app">
             <div className="title">Login</div>
-            <button onClick={() => console.log(read_local_storage("authenticated"))}>Test transaction</button>
+            <button onClick={() => test_contract_method()}>Test transaction</button>
             <div className="login-form">
               {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormLogin)}
             </div>

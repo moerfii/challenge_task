@@ -4,7 +4,7 @@ import "./Home.css";
 import {Tabs} from "antd";
 import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
-import Web3 from 'web3';
+import { get_artists, buy_membership } from '../web3/Web3Service';
 
 const {TabPane} = Tabs;
 
@@ -15,16 +15,27 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    async function load() {
-      const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
-      const accounts = await web3.eth.requestAccounts();
-
-      alert(accounts[0]);
+    get_artists().then((tx) => {
+      console.log(tx);
       setLoading(false);
-    }
-    load();
+      
+    }).catch((error) => {
+      console.log(error);
+      setLoading(false);
+    });
   }, []);
 
+  const buy_abo = () => {
+    setLoading(true);
+    buy_membership().then((tx) => {
+      console.log(tx);
+      setLoading(false);
+      setSubscribed(true);
+    }).catch((error) => {
+      console.log(error);
+      setLoading(false);
+    });
+  }
   
   return(
     <>

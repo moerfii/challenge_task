@@ -7,8 +7,8 @@ let musicFactoryContract;
 
 let setupDone = false;
 
-const local_contract_address = "0xCD7a20B55943A085571DD792890a359354b4Ba9b";
-const local_account = "0x4c3680Db3b3B850fbC54cC894E766ddFe627a5F2";
+const local_contract_address = "0x6A18b08168a0726f660d45bA5e98C34Ef2B7A93c";
+const local_account = "0xd2Bad569ee8f11c3E6Df92EE39Da0F60F95e0eb1";
 
 export const init = async () => {
     let provider = window.ethereum;
@@ -118,5 +118,12 @@ export const _validate_abo = async () => {
         await init();
     }
     return musicFactoryContract.methods._validate_abo().send({from: local_account});
+}
+
+export const buy_membership = async () => {
+    if (!setupDone){
+        await init();
+    }
+    return musicFactoryContract.methods.buy_membership().send({from: local_account});
 }
 
