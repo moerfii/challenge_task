@@ -6,10 +6,13 @@ import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
 import { get_artists, buy_membership } from '../web3/Web3Service';
 
+
 const {TabPane} = Tabs;
 
 
 const Home = () => {
+
+
 
   const [subscribed, setSubscribed] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -56,8 +59,8 @@ const Home = () => {
                 <img src={e.image} style={{width:"200px", marginBottom: "10px"}}>
                 </img>
                 <p>{e.title}</p>
-                {subscribed ? <div className='purchaseButtonHome' onClick={() => alert("Play the song!!!")}>
-                  Play
+                {subscribed ? <div className='purchaseButtonHome' >
+                  Songs
                 </div> : null}
               </Link>
             ))}

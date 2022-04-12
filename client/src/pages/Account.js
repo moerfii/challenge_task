@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const Account = () => {
-  
+
+
+
+import MultiLineChart from '../helpers/MultiLineChart'
+
+function Account() {
   return (
   <>
   <div className="container">
-  <Link to="/" className="link">My Account</Link>
-  </div>
-  </>
-)
+  <MultiLineChart />
+    </div>
+    </>
+  )
 }
-
 export default Account;

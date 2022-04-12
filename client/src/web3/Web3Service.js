@@ -7,8 +7,8 @@ let musicFactoryContract;
 
 let setupDone = false;
 
-const local_contract_address = "0x6A18b08168a0726f660d45bA5e98C34Ef2B7A93c";
-const local_account = "0xd2Bad569ee8f11c3E6Df92EE39Da0F60F95e0eb1";
+const local_contract_address = "0x5fcc825Dec2a3a5ef6a47370701D8E4a6B6A6C52";
+const local_account = "0x1035660762b8e63565C7d6fB53EE1Be85b717315";
 
 export const init = async () => {
     let provider = window.ethereum;
