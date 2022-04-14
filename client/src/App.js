@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {init} from './web3/Web3Service';
 import { save_local_storage, read_local_storage } from './helpers/localStorage';
 import { Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
@@ -17,6 +17,8 @@ const {Footer, Sider, Content} = Layout;
 
 
 const App = () => {
+
+  const [Album, setAlbum] = useState();
 
   useEffect(() => {
     if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
