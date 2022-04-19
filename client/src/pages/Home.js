@@ -4,7 +4,7 @@ import "./Home.css";
 import {Tabs} from "antd";
 import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
-import { get_artists, buy_membership } from '../web3/Web3Service';
+import { get_artists, buy_membership, get_abo_price, set_abo_price } from '../web3/Web3Service';
 
 
 const {TabPane} = Tabs;
@@ -16,12 +16,13 @@ const Home = () => {
 
   const [subscribed, setSubscribed] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [aboPrice, setAboPrice] = useState(0);
   
   useEffect(() => {
-    get_artists().then((tx) => {
+    get_abo_price().then((tx) => {
       console.log(tx);
       setLoading(false);
-      
+      setAboPrice(tx);
     }).catch((error) => {
       console.log(error);
       setLoading(false);
@@ -30,7 +31,7 @@ const Home = () => {
 
   const buy_abo = () => {
     setLoading(true);
-    buy_membership().then((tx) => {
+    buy_membership(aboPrice).then((tx) => {
       console.log(tx);
       setLoading(false);
       setSubscribed(true);
@@ -49,7 +50,7 @@ const Home = () => {
         </h1>
         {loading ? Loader() :
         <div>
-        {subscribed ? null : <div className='subscriptionButton' onClick={() => setSubscribed(true)}>
+        {subscribed ? null : <div className='subscriptionButton' onClick={() => buy_abo()}>
           Subscribe
         </div>
         }
