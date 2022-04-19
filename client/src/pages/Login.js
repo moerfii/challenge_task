@@ -34,6 +34,7 @@ const Login = () => {
       console.log(tx);
       setLoading(false);
       save_local_storage("authenticated", 1);
+      save_local_storage("isArtist", 0);
       setIsSubmitted(true);
 
     }).catch((error) => {
@@ -50,6 +51,7 @@ const Login = () => {
       console.log(tx);
       setLoading(false);
       save_local_storage("authenticated", 1);
+      save_local_storage("isArtist", 1);
       setIsSubmitted(true);
 
     }).catch((error) => {

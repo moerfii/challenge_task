@@ -18,7 +18,7 @@ const {Footer, Sider, Content} = Layout;
 
 const App = () => {
 
-  const [Album, setAlbum] = useState();
+  //const [Album, setAlbum] = useState();
 
   useEffect(() => {
     if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
