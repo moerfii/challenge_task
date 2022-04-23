@@ -41,11 +41,12 @@ const Login = () => {
 
   };
 
-  const addUser = async () => {
+  const addUser = async (name, pw, isArtist) => {
     const request = {
-      "name": "Michael Jackson",
-      "pw": "111",
-      "isArtist": 1,
+      "id": 0,
+      "name": name,
+      "pw": pw,
+      "isArtist": isArtist,
       "artistDetails":{
           "clicks": 0
       }
@@ -78,14 +79,17 @@ const Login = () => {
    */
 
 
-  const register = () => {
+  const register = (name, pw, isArtist) => {
       register_user().then((tx) => {
-      console.log(tx);
-      setLoading(false);
-      save_local_storage("authenticated", 1);
-      save_local_storage("isArtist", 0);
-      setIsSubmitted(true);
-
+        console.log(tx);
+        addUser(name, pw, isArtist).then((tx) => {
+          save_local_storage("authenticated", 1);
+          save_local_storage("isArtist", 0);
+          setLoading(false);
+          setIsSubmitted(true);
+        }).catch((error) => {
+          console.log(error);
+        });
     }).catch((error) => {
       console.log(error);
       setErrorMessages({ name: "pass", message: errors.tx });
@@ -93,16 +97,17 @@ const Login = () => {
     });
   }
 
-  const register_a = (name) => {
-      console.log(name);
-      console.log(typeof(name));
+  const register_a = (name, pw, isArtist) => {
       register_artist(name).then((tx) => {
       console.log(tx);
-      setLoading(false);
-      save_local_storage("authenticated", 1);
-      save_local_storage("isArtist", 1);
-      setIsSubmitted(true);
-
+      addUser(name, pw, isArtist).then((tx) => {
+        save_local_storage("authenticated", 1);
+        save_local_storage("isArtist", 1);
+        setLoading(false);
+        setIsSubmitted(true);
+      }).catch((error) => {
+        console.log(error);
+      });
     }).catch((error) => {
       console.log(error);
       setErrorMessages({ name: "pass", message: errors.tx });
@@ -145,13 +150,13 @@ const Login = () => {
     
     //Prevent page reload
     event.preventDefault();
-
+    var {rname, pass} = document.forms[1];
     //var { uname, pass } = document.forms[0];
 
     /*check if username exists already
     
     */
-    register();
+    register(rname.value, pass.value, 0);
   };
 
   const handleSubmitRegisterArtist = async (event) => {
@@ -160,13 +165,12 @@ const Login = () => {
     //Prevent page reload
     event.preventDefault();
     var {artist_name, pass} = document.forms[1];
-
     //var { uname, pass } = document.forms[0];
 
     /*check if username exists already
     
     */
-    register_a(artist_name.value);
+    register_a(artist_name.value, pass.value, 1);
   };
 
 
@@ -202,10 +206,10 @@ const Login = () => {
   const renderFormRegister = (
     <div className="form">
       {loading ? <Loader/> :
-      <form onSubmit={handleSubmitRegister}>
+      <form id='form_register' onSubmit={handleSubmitRegister}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
+          <input type="text" name="rname" required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
@@ -251,7 +255,7 @@ const Login = () => {
             <div className="title">Login</div>
             <button onClick={() => test_contract_method()}>Test transaction</button>
             <button onClick={() => test_api()}>Test JSON Read</button>
-            <button onClick={() => addUser()}>Test JSON Create</button>
+            <button onClick={() => addUser("Test", "111", 1)}>Test JSON Create</button>
             <button onClick={() => updateUser()}>Test JSON Update</button>
             <div className="login-form">
               {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormLogin)}
