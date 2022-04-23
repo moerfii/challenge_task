@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Bob Dylan",
+      "pw": "111",
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 0
+      }
+    },
+    {
+      "id": 1,
+      "name": "Michael Jackson",
+      "pw": "222",
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 0
+      }
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { register_user, get_artists, register_artist } from '../web3/Web3Service
 import { save_local_storage, read_local_storage } from '../helpers/localStorage';
 import "./Login.css";
 import {Tabs} from "antd";
+import api from '../helpers/api.js';
 
 const {TabPane} = Tabs;
 
@@ -20,6 +21,11 @@ const Login = () => {
     tx: "tranasction failed, please try again."
   };
 
+  /**
+   * TEST METHODS START
+   *  
+   */
+
   const test_contract_method = () => {
     get_artists().then((tx) => {
       console.log(tx);
@@ -28,6 +34,49 @@ const Login = () => {
       console.log(error);
     });
   }
+
+  const test_api = async () => {
+    const response = await api.get("/users");
+    console.log(response.data);
+
+  };
+
+  const addUser = async () => {
+    const request = {
+      "name": "Michael Jackson",
+      "pw": "111",
+      "isArtist": 1,
+      "artistDetails":{
+          "clicks": 0
+      }
+    };
+    const response = await api.post("/users", request);
+    console.log(response);  
+  }
+
+  const updateUser = async () => {
+    const request = {
+      "id": 1,
+      "name": "Michael Jackson",
+      "pw": "222",
+      "isArtist": 1,
+      "artistDetails":{
+          "clicks": 0
+      }
+    };
+    const response = await api.put(`/users/${request.id}`, request);
+    console.log(response.data);
+  }
+
+  const deleteUser = async (id) => {
+    await api.delete(`/users/${id}`);
+  }
+
+  /**
+   * TEST METHODS END
+   *  
+   */
+
 
   const register = () => {
       register_user().then((tx) => {
@@ -201,6 +250,9 @@ const Login = () => {
           <div className="app">
             <div className="title">Login</div>
             <button onClick={() => test_contract_method()}>Test transaction</button>
+            <button onClick={() => test_api()}>Test JSON Read</button>
+            <button onClick={() => addUser()}>Test JSON Create</button>
+            <button onClick={() => updateUser()}>Test JSON Update</button>
             <div className="login-form">
               {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormLogin)}
             </div>
