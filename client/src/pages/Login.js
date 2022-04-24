@@ -35,10 +35,10 @@ const Login = () => {
     });
   }
 
-  const test_api = async () => {
-    const response = await api.get("/users");
+  const get_users = async () => {
+    const response = await api.get(`/users/`);
     console.log(response.data);
-
+    return response.data;
   };
 
   const addUser = async (name, pw, isArtist) => {
@@ -46,6 +46,7 @@ const Login = () => {
       "id": 0,
       "name": name,
       "pw": pw,
+      "membership": 0,
       "isArtist": isArtist,
       "artistDetails":{
           "clicks": 0
@@ -53,6 +54,7 @@ const Login = () => {
     };
     const response = await api.post("/users", request);
     console.log(response);  
+    save_local_storage("id", JSON.stringify(response.data));
   }
 
   const updateUser = async () => {
@@ -60,6 +62,7 @@ const Login = () => {
       "id": 1,
       "name": "Michael Jackson",
       "pw": "222",
+      "membership": 0,
       "isArtist": 1,
       "artistDetails":{
           "clicks": 0
@@ -84,7 +87,6 @@ const Login = () => {
         console.log(tx);
         addUser(name, pw, isArtist).then((tx) => {
           save_local_storage("authenticated", 1);
-          save_local_storage("isArtist", 0);
           setLoading(false);
           setIsSubmitted(true);
         }).catch((error) => {
@@ -102,7 +104,6 @@ const Login = () => {
       console.log(tx);
       addUser(name, pw, isArtist).then((tx) => {
         save_local_storage("authenticated", 1);
-        save_local_storage("isArtist", 1);
         setLoading(false);
         setIsSubmitted(true);
       }).catch((error) => {
@@ -127,22 +128,37 @@ const Login = () => {
     var { uname, pass } = document.forms[0];
 
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        save_local_storage("authenticated", 1);
-        setIsSubmitted(true);
+    //const userData = database.find((user) => user.username === uname.value);
+    var userData = [];
+    get_users().then((data) => {
+      console.log("User data fetched: " + data[0]);
+      userData = data;
+      // Compare user info
+      if (userData) {
         
+        var correctElement;
+        for (let i = 0; i < userData.length; i++) {
+          const element = userData[i];
+          if(element.name == uname.value){
+            correctElement = element;
+            break;
+          }
+        }
+        if (correctElement.pw !== pass.value && correctElement) {
+          // Invalid password
+          setErrorMessages({ name: "pass", message: errors.pass });
+        } else {
+          save_local_storage("authenticated", 1);
+          save_local_storage("id", JSON.stringify(correctElement));
+          setIsSubmitted(true);
+        }
+      } else {
+        // Username not found
+        setErrorMessages({ name: "uname", message: errors.uname });
       }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
+    }).catch((error) => {
+      console.log(error);
+    });
   };
 
   const handleSubmitRegister = async (event) => {
@@ -254,7 +270,7 @@ const Login = () => {
           <div className="app">
             <div className="title">Login</div>
             <button onClick={() => test_contract_method()}>Test transaction</button>
-            <button onClick={() => test_api()}>Test JSON Read</button>
+            <button onClick={() => get_users()}>Test JSON Read</button>
             <button onClick={() => addUser("Test", "111", 1)}>Test JSON Create</button>
             <button onClick={() => updateUser()}>Test JSON Update</button>
             <div className="login-form">

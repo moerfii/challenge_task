@@ -4,17 +4,15 @@ import "./Home.css";
 import {Tabs} from "antd";
 import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
+import api from '../helpers/api.js';
+import { save_local_storage, read_local_storage } from '../helpers/localStorage';
 import { get_artists, buy_membership, get_abo_price, set_abo_price, _validate_abo } from '../web3/Web3Service';
-
 
 const {TabPane} = Tabs;
 
-
 const Home = () => {
 
-
-
-  const [subscribed, setSubscribed] = useState(false);
+  const [subscribed, setSubscribed] = useState(JSON.parse(read_local_storage("id")).membership);
   const [loading, setLoading] = useState(true);
   const [aboPrice, setAboPrice] = useState(0);
   const [artists, setArtists] = useState([]);
@@ -47,18 +45,38 @@ const Home = () => {
     });
   }, []);
 
+  const updateUser = async (data) => {
+    const request = {
+      "id": data.id,
+      "name": data.name,
+      "pw": data.pw,
+      "membership": 1,
+      "isArtist": data.isArtist,
+      "artistDetails":{
+          "clicks": data.artistDetails.clicks
+      }
+    };
+    const response = await api.put(`/users/${data.id}`, request);
+    console.log(response.data);
+    save_local_storage("id", JSON.stringify(response.data));
+  }
+
   const buy_abo = () => {
     setLoading(true);
     buy_membership(aboPrice).then((tx) => {
       console.log(tx);
-      setLoading(false);
-      setSubscribed(true);
+      updateUser(JSON.parse(read_local_storage("id"))).then((tx) => {
+        setLoading(false);
+        setSubscribed(true);
+      }).catch((error) => {
+        console.log(error);
+      });
     }).catch((error) => {
       console.log(error);
       setLoading(false);
     });
   }
-  
+
   return(
     <>
     <Tabs defaultActiveKey="1" centered>
