@@ -1,0 +1,78 @@
+.featuredTitle {
+  color: white;
+  font-size: 35px;
+  font-weight: 600;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  gap: 20px;
+  row-gap: 50px;
+  -webkit-box-pack: start;
+}
+
+.albumSelection {
+  color:rgb(205, 203, 203);
+  text-align: center;
+  transition: transform .4s;
+}
+
+.albumSelection:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.purchaseButtonHome {
+  padding: 10px;
+  background-color: #1d22b9;
+  width: 90px;
+  color:white;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+}
+
+
+
+.purchaseButtonHome:hover {
+  cursor: pointer;
+  transform: scale(1.05);;
+}
+
+.payoutButton {
+  padding: 15px;
+  background-color: #24b98f; 
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+  width: 200px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 45%;
+  margin-right: 50%;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
+.payoutButton:hover {
+  cursor: pointer;
+  transform: scale(1.05);;
+}

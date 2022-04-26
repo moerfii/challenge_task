@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Bob Dylan",
+      "pw": "111",
+      "membership": 1,
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 0
+      }
+    },
+    {
+      "id": 1,
+      "name": "Michael Jackson",
+      "pw": "222",
+      "membership": 0,
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 0
+      }
+    },
+    {
+      "id": 2,
+      "name": "Mick Jagger",
+      "pw": "123",
+      "membership": 0,
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Mark Knopfler",
+      "pw": "123",
+      "membership": 1,
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 0
+      }
+    }
+  ]
+}
