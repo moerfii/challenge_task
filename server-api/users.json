@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": "0x9c6a4bD1Ab018A0835C8769CC35Bc612b1fbDAAc",
       "name": "Bob Dylan",
       "pw": "111",
       "membership": 1,
@@ -11,7 +11,7 @@
       }
     },
     {
-      "id": 1,
+      "id": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "name": "Michael Jackson",
       "pw": "222",
       "membership": 0,
@@ -21,7 +21,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "0x78546508327a4ED010f00ae7ebEb4E2BEBe610f0",
       "name": "Mick Jagger",
       "pw": "123",
       "membership": 0,
@@ -31,11 +31,11 @@
       }
     },
     {
-      "id": 3,
-      "name": "Mark Knopfler",
+      "id": "0xde3ad08c3177e069551729b96235703f9fae3edc",
+      "name": "Keith Richards",
       "pw": "123",
       "membership": 1,
-      "isArtist": 1,
+      "isArtist": 0,
       "artistDetails": {
         "clicks": 0
       }

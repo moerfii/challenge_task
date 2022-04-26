@@ -6,7 +6,7 @@ import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
 import api from '../helpers/api.js';
 import { save_local_storage, read_local_storage } from '../helpers/localStorage';
-import { get_artists, buy_membership, get_abo_price, set_abo_price, _validate_abo } from '../web3/Web3Service';
+import { get_artists, buy_membership, get_abo_price, set_abo_price, validate_abo } from '../web3/Web3Service';
 
 const {TabPane} = Tabs;
 
@@ -21,36 +21,42 @@ const Home = () => {
    
     get_artists().then((tx) => {
       console.log(tx);
-      setLoading(false);
       setArtists(tx);
-    }).catch((error) => {
-      console.log(error);
-      setLoading(false);
-    });
-    get_abo_price().then((tx) => {
-      console.log(tx);
-      setAboPrice(tx);
-      setLoading(false);
-      /* _validate_abo().then((tx) => {
+      get_abo_price().then((tx) => {
         console.log(tx);
-        setLoading(false);
-        
+        setAboPrice(tx);
+        validate_abo(JSON.parse(read_local_storage("id")).id).then((valid) => {
+          console.log(valid);
+          if(valid == JSON.parse(read_local_storage("id")).membership){
+            setLoading(false);
+          }else{
+            updateUser(JSON.parse(read_local_storage("id")), 0).then((tx) => {
+              setSubscribed(false);
+            }).catch((error) => {
+              console.log(error);
+            });
+            setLoading(false);
+          }          
+        }).catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
       }).catch((error) => {
         console.log(error);
         setLoading(false);
-      }); */
+      });
     }).catch((error) => {
       console.log(error);
       setLoading(false);
     });
   }, []);
 
-  const updateUser = async (data) => {
+  const updateUser = async (data, valid) => {
     const request = {
       "id": data.id,
       "name": data.name,
       "pw": data.pw,
-      "membership": 1,
+      "membership": valid,
       "isArtist": data.isArtist,
       "artistDetails":{
           "clicks": data.artistDetails.clicks
@@ -63,9 +69,9 @@ const Home = () => {
 
   const buy_abo = () => {
     setLoading(true);
-    buy_membership(aboPrice).then((tx) => {
+    buy_membership(JSON.parse(read_local_storage("id")).id, aboPrice).then((tx) => {
       console.log(tx);
-      updateUser(JSON.parse(read_local_storage("id"))).then((tx) => {
+      updateUser(JSON.parse(read_local_storage("id")), 1).then((tx) => {
         setLoading(false);
         setSubscribed(true);
       }).catch((error) => {

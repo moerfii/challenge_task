@@ -41,9 +41,9 @@ const Login = () => {
     return response.data;
   };
 
-  const addUser = async (name, pw, isArtist) => {
+  const addUser = async (address, name, pw, isArtist) => {
     const request = {
-      "id": 0,
+      "id": address,
       "name": name,
       "pw": pw,
       "membership": 0,
@@ -84,8 +84,7 @@ const Login = () => {
 
   const register = (name, pw, isArtist) => {
       register_user().then((tx) => {
-        console.log(tx);
-        addUser(name, pw, isArtist).then((tx) => {
+        addUser(tx.from, name, pw, isArtist).then((tx) => {
           save_local_storage("authenticated", 1);
           setLoading(false);
           setIsSubmitted(true);
@@ -102,7 +101,7 @@ const Login = () => {
   const register_a = (name, pw, isArtist) => {
       register_artist(name).then((tx) => {
       console.log(tx);
-      addUser(name, pw, isArtist).then((tx) => {
+      addUser(tx.from, name, pw, isArtist).then((tx) => {
         save_local_storage("authenticated", 1);
         setLoading(false);
         setIsSubmitted(true);
