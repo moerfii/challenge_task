@@ -50,6 +50,11 @@ contract MusicFactory is Ownable {
         uint time_horizon
     );
 
+    event payout_artist(
+        address artist_ids, 
+        uint salary_wei
+    );
+
 
     /* Artist Functions */
     function register_artist(string memory name) public {
@@ -102,6 +107,7 @@ contract MusicFactory is Ownable {
             uint artist_salary = clicks[i] * payout_amount_per_click;
             uint salary_wei = artist_salary * oneWei;
             payable(artist_ids[i]).transfer(salary_wei);
+            emit payout_artist(artist_ids[i], salary_wei);
         }
 
         uint leftovers_brutto = address(this).balance - next_money_pool;
