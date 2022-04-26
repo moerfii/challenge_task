@@ -36,7 +36,7 @@ if __name__ == "__main__":
     puk_pk = '2aed0271ebab4d64413d08d4ad7d1fad987ecb8391b4c36732cf336c3413697a' # pls don't rob my test-ether
     url = "http://127.0.0.1:8545"
     web3 = http_connect(url=url)
-    contract_address = "0xc90A19cb4A096441c8cF503FDFd7BAE6683cE716"
+    contract_address = "0x779710a1A1C7f1409a3E35F936a739F307bC4f59"
     address = web3.toChecksumAddress(contract_address)
     print(f'connected to web3: {web3.isConnected()}')
     with open('./contract_abi.json') as f:
@@ -44,11 +44,11 @@ if __name__ == "__main__":
     contract = web3.eth.contract(
         address=address, abi=abi)
 
-    call_new_artist(contract, "ben miller", puk, puk_pk)
+    #call_new_artist(contract, "ben miller", puk, puk_pk)
 
-    eventfilter = contract.events.newAbo.createFilter(toBlock='latest', fromBlock=0)
+    eventfilter = contract.events.payout_artist.createFilter(toBlock='latest', fromBlock=0)
     events = [event for event in eventfilter.get_all_entries()]
-    #print(events)
+    print(events)
 
     ["0x2E44c0b8ABA332601F294698B7fD047E04A60015", "0xa5727D7F321Ae6DA6B9219f7aeA596f2240D08B5"]
     []
