@@ -95,8 +95,10 @@ const App = () => {
         </Content>
 
       </Layout>
-      <Footer className='footer'>
-        <Player />
+      <Footer className='footer' style={{justifyContent: "center"}}>
+        {JSON.parse(read_local_storage("id")).membership == 1 ? 
+          <Player /> : null
+        }
       </Footer>
     </Layout>
   )

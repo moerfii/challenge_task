@@ -89,6 +89,6 @@ export const library = [
       title: "The Eminem Show",
       image:
         "https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg",
-    },
+    }
     
   ];

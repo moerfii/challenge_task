@@ -15,7 +15,14 @@ const Home = () => {
   const [subscribed, setSubscribed] = useState(JSON.parse(read_local_storage("id")).membership);
   const [loading, setLoading] = useState(true);
   const [aboPrice, setAboPrice] = useState(0);
+  const [music, setMusic] = useState([]);
   const [artists, setArtists] = useState([]);
+
+  const get_music = async () => {
+    const response = await api.get(`/music/`);
+    console.log(response.data);
+    return response.data;
+  };
   
   useEffect(() => {
    
@@ -27,6 +34,12 @@ const Home = () => {
         setAboPrice(tx);
         validate_abo(JSON.parse(read_local_storage("id")).id).then((valid) => {
           console.log(valid);
+          get_music().then((data) => {
+            console.log("Music data fetched: " + data[0]);
+            setMusic(data);
+          }).catch((error) => {
+            console.log(error);
+          });
           if(valid == JSON.parse(read_local_storage("id")).membership){
             setLoading(false);
           }else{
@@ -97,7 +110,7 @@ const Home = () => {
         </div>
         }
           <div className='albums'>
-            {library.map((e)=>(
+            {music.map((e)=>(
               <Link to="/album" state={e} className="albumSelection">
                 <img src={e.image} style={{width:"200px", marginBottom: "10px"}}>
                 </img>
