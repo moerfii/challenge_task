@@ -1,5 +1,4 @@
 import React, { useState }from 'react';
-import database from '../data/data';
 import Loader from '../helpers/Loader';
 import { register_user, get_artists, register_artist } from '../web3/Web3Service';
 import { save_local_storage, read_local_storage } from '../helpers/localStorage';

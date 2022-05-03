@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {init} from './web3/Web3Service';
 import { save_local_storage, read_local_storage } from './helpers/localStorage';
 import { Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
 import Home from "./pages/Home";
@@ -18,7 +17,7 @@ const {Footer, Sider, Content} = Layout;
 
 const App = () => {
 
-  //const [Album, setAlbum] = useState();
+  const [song, setSong] = useState();
 
   useEffect(() => {
     if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
@@ -84,7 +83,7 @@ const App = () => {
             
             <Route path="/home" element={<Home />} />
             <Route path="/music" element={<Music />} />
-            <Route path="/album" element={<Album />} />
+            <Route path="/album" element={<Album setSong={setSong}/>} />
             <Route path="/account" element={<Account />} />
             <Route path="/login" element={<Navigate replace to="/home"/>} />
             <Route path="/" element={<Navigate replace to="/login"/>} />
@@ -96,8 +95,8 @@ const App = () => {
 
       </Layout>
       <Footer className='footer' style={{justifyContent: "center"}}>
-        {JSON.parse(read_local_storage("id")).membership == 1 ? 
-          <Player /> : null
+        {song && 
+          <Player album={song}/>
         }
       </Footer>
     </Layout>

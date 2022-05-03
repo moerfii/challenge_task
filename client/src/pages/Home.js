@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {Tabs} from "antd";
-import { library } from '../data/albumList';
 import Loader from '../helpers/Loader';
 import api from '../helpers/api.js';
 import { save_local_storage, read_local_storage } from '../helpers/localStorage';

@@ -17,7 +17,7 @@
       "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 0
+        "clicks": 1
       }
     },
     {
@@ -41,8 +41,8 @@
       }
     },
     {
-      "id": "0x41ab9b063730208f06bdc1b01e3344ac6cf212dc",
-      "name": "Bob",
+      "id": "0x80d1eaf6008f7c5a0a59e8343546f3b6a42c3728",
+      "name": "Peter",
       "pw": "123",
       "membership": 1,
       "isArtist": 0,
@@ -54,130 +54,131 @@
   "music": [
     {
       "title": "Thriller",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://www.br.de/puls/images/michael-jackson-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=fc716"
+      "image": "https://www.br.de/puls/images/michael-jackson-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=fc716"
     },
     {
-      "title": "Blood On The Tracks",
-      "artist": "Michael Jackson",
+      "title": "Tangled Up in Blue",
+      "duration": "5:59",
+      "artist": "Bob Dylan",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://m.media-amazon.com/images/I/81x8ZJqMm7L._SL1500_.jpg"
+      "image": "https://m.media-amazon.com/images/I/81x8ZJqMm7L._SL1500_.jpg"
     },
     {
-      "title": "The Rise And Fall Of Ziggy Stardust",
-      "artist": "Michael Jackson",
+      "title": "Space Oddity",
+      "duration": "5:59",
+      "artist": "David Bowie",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
       "image": "https://upload.wikimedia.org/wikipedia/en/0/01/ZiggyStardust.jpg"
     },
     {
-      "title": "Dark Side Of The Moon",
-      "artist": "Michael Jackson",
+      "title": "Time",
+      "duration": "5:59",
+      "artist": "Pink Floyd",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://www.br.de/puls/musik/ruhmeshalle/pink-floyd-the-dark-side-of-the-moon-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=c9487"
+      "image": "https://www.br.de/puls/musik/ruhmeshalle/pink-floyd-the-dark-side-of-the-moon-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=c9487"
     },
     {
-      "title": "Rumours",
-      "artist": "Michael Jackson",
+      "title": "Don't Stop",
+      "duration": "5:59",
+      "artist": "Fleetwood Mac",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://i.scdn.co/image/ab67616d0000b2730001af4f80be77069fc8fd41"
+      "image": "https://i.scdn.co/image/ab67616d0000b2730001af4f80be77069fc8fd41"
     },
     {
-      "title": "Exile On Main St.",
-      "artist": "Michael Jackson",
+      "title": "Rocks Off",
+      "duration": "5:59",
+      "artist": "The Rolling Stones",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://m.media-amazon.com/images/I/81iYdOXSwwL._SL1400_.jpg"
+      "image": "https://m.media-amazon.com/images/I/81iYdOXSwwL._SL1400_.jpg"
     },
     {
-      "title": "Abbey Road",
-      "artist": "Michael Jackson",
+      "title": "Something",
+      "duration": "5:59",
+      "artist": "The Beatles",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://www.tagesspiegel.de/images/members-of-the-beatles-cross-abbey-road-in-london/24883714/1-format43.jpg"
+      "image": "https://www.tagesspiegel.de/images/members-of-the-beatles-cross-abbey-road-in-london/24883714/1-format43.jpg"
     },
     {
       "title": "Shakira",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/en/3/35/Shakira_-_Shakira_%282014%29.png"
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/35/Shakira_-_Shakira_%282014%29.png"
     },
     {
       "title": "Adele 21",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/fi/5/51/Adele21albumikansi.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/fi/5/51/Adele21albumikansi.jpg"
     },
     {
       "title": "Strange Clouds",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/en/6/69/B.o.B_-_Strange_Clouds_-_LP_Cover.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/en/6/69/B.o.B_-_Strange_Clouds_-_LP_Cover.jpg"
     },
     {
       "title": "Arctic Monkeys",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://i.pinimg.com/originals/c1/83/44/c1834474ec73e7faa475d68fdd791a48.jpg"
+      "image": "https://i.pinimg.com/originals/c1/83/44/c1834474ec73e7faa475d68fdd791a48.jpg"
     },
     {
       "title": "My Everything",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/en/d/d5/Ariana_Grande_My_Everything_2014_album_artwork.png"
+      "image": "https://upload.wikimedia.org/wikipedia/en/d/d5/Ariana_Grande_My_Everything_2014_album_artwork.png"
     },
     {
       "title": "Have A Nice Day",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/de/thumb/e/e5/Bon_Jovi_Have_a_Nice_Day.svg/1200px-Bon_Jovi_Have_a_Nice_Day.svg.png"
+      "image": "https://upload.wikimedia.org/wikipedia/de/thumb/e/e5/Bon_Jovi_Have_a_Nice_Day.svg/1200px-Bon_Jovi_Have_a_Nice_Day.svg.png"
     },
     {
       "title": "Happier",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/en/e/e5/Marshmello_and_Bastille_Happier.png"
+      "image": "https://upload.wikimedia.org/wikipedia/en/e/e5/Marshmello_and_Bastille_Happier.png"
     },
     {
       "title": "Stoney",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/fi/d/d9/Post_Malone_Stoney.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/fi/d/d9/Post_Malone_Stoney.jpg"
     },
     {
       "title": "The Eminem Show",
+      "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image":
-        "https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg"
     }
   ]
 }
