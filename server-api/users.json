@@ -7,7 +7,7 @@
       "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 0
+        "clicks": 3
       }
     },
     {
@@ -53,6 +53,7 @@
   ],
   "music": [
     {
+      "id": 0,
       "title": "Test Song",
       "duration": "5:59",
       "artist": "Test Artist",
@@ -61,6 +62,7 @@
       "image": "https://hallenstadion.ch/wp-content/uploads/2022/01/canstockphoto22402523-arcos-creator.com_-1024x1024-1.jpg"
     },
     {
+      "id": 1,
       "title": "Thriller",
       "duration": "5:59",
       "artist": "Michael Jackson",
@@ -69,6 +71,7 @@
       "image": "https://www.br.de/puls/images/michael-jackson-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=fc716"
     },
     {
+      "id": 2,
       "title": "Tangled Up in Blue",
       "duration": "5:59",
       "artist": "Bob Dylan",
@@ -77,6 +80,7 @@
       "image": "https://m.media-amazon.com/images/I/81x8ZJqMm7L._SL1500_.jpg"
     },
     {
+      "id": 3,
       "title": "Space Oddity",
       "duration": "5:59",
       "artist": "David Bowie",
@@ -85,6 +89,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/0/01/ZiggyStardust.jpg"
     },
     {
+      "id": 4,
       "title": "Time",
       "duration": "5:59",
       "artist": "Pink Floyd",
@@ -93,6 +98,7 @@
       "image": "https://www.br.de/puls/musik/ruhmeshalle/pink-floyd-the-dark-side-of-the-moon-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=c9487"
     },
     {
+      "id": 5,
       "title": "Don't Stop",
       "duration": "5:59",
       "artist": "Fleetwood Mac",
@@ -101,6 +107,7 @@
       "image": "https://i.scdn.co/image/ab67616d0000b2730001af4f80be77069fc8fd41"
     },
     {
+      "id": 6,
       "title": "Rocks Off",
       "duration": "5:59",
       "artist": "The Rolling Stones",
@@ -109,6 +116,7 @@
       "image": "https://m.media-amazon.com/images/I/81iYdOXSwwL._SL1400_.jpg"
     },
     {
+      "id": 7,
       "title": "Something",
       "duration": "5:59",
       "artist": "The Beatles",
@@ -117,6 +125,7 @@
       "image": "https://www.tagesspiegel.de/images/members-of-the-beatles-cross-abbey-road-in-london/24883714/1-format43.jpg"
     },
     {
+      "id": 8,
       "title": "Brown Sugar",
       "duration": "5:59",
       "artist": "The Rolling Stones",
@@ -125,6 +134,7 @@
       "image": "https://m.media-amazon.com/images/I/71biD0lQgyL._SX522_.jpg"
     },
     {
+      "id": 9,
       "title": "Fat Bottomed Girls",
       "duration": "5:59",
       "artist": "Queen",
@@ -133,6 +143,7 @@
       "image": "https://blob.cede.ch/catalog/101027000/101027010_1_92.jpg?v=1"
     },
     {
+      "id": 10,
       "title": "Don't You (Forget About Me)",
       "duration": "5:59",
       "artist": "Simple Minds",
@@ -141,14 +152,16 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/9/94/Dont_You_Forget_About_Me_%28alternative_cover%29.jpg"
     },
     {
+      "id": 11,
       "title": "Hotel California",
       "duration": "5:59",
       "artist": "The Eagles",
-      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "artistId": "0x26072575635461583493f72f74e94552a42245f5",
       "url": "8",
       "image": "https://velona-records.com/wp-content/uploads/2021/11/71sxlkhz8L._SL1425_.jpg"
     },
     {
+      "id": 12,
       "title": "Murder Incorporated",
       "duration": "5:59",
       "artist": "Bruce Springsteen",
@@ -157,6 +170,7 @@
       "image": "https://exlibris.azureedge.net/covers/5099/7478/5552/8/5099747855528xxl.webp"
     },
     {
+      "id": 13,
       "title": "My Sweet Lord",
       "duration": "5:59",
       "artist": "George Harrison",
@@ -165,6 +179,7 @@
       "image": "https://static.qobuz.com/images/covers/56/77/0060254717756_600.jpg"
     },
     {
+      "id": 14,
       "title": "Riding with the King",
       "duration": "5:59",
       "artist": "B.B. King & Eric Clapton",
@@ -173,6 +188,7 @@
       "image": "https://assets.thalia.media/img/artikel/8bf2691ec700899d8e1dc772c1f17bebb8da797e-00-00.jpeg"
     },
     {
+      "id": 15,
       "title": "So Far Away",
       "duration": "5:59",
       "artist": "Dire Straits",
@@ -181,6 +197,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/6/67/DS_Brothers_in_Arms.jpg"
     },
     {
+      "id": 16,
       "title": "Stuck In The Middle With You",
       "duration": "5:59",
       "artist": "The Wheelers",
@@ -189,6 +206,7 @@
       "image": "https://i.scdn.co/image/ab67616d0000b273a5ce236c22035a02cf87d4de"
     },
     {
+      "id": 17,
       "title": "Take_The_Long_Way_Home",
       "duration": "5:59",
       "artist": "Supertramp",
@@ -197,6 +215,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/Supertramp_-_Breakfast_in_America.jpg"
     },
     {
+      "id": 18,
       "title": "Tiny Dancer",
       "duration": "5:59",
       "artist": "Elton John",

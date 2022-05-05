@@ -107,11 +107,11 @@ export const set_payout_period = async (period) => {
     return musicFactoryContract.methods.set_payout_period(period).send({from: local_account});
 }
 
-export const payout = async (address, clicks, price) => {
+export const payout = async (address, artist_ids, clicks) => {
     if (!setupDone){
         await init();
     }
-    return musicFactoryContract.methods.payout(address, clicks).send({from: address, value: price});
+    return musicFactoryContract.methods.payout(artist_ids, clicks).send({from: address});
 }
 
 export const validate_abo = async (address) => {

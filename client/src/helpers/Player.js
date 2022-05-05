@@ -3,6 +3,7 @@ import "./Player.css";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import api from '../helpers/api.js';
+// Uncomment for local file playback
 // import mp3_1 from '../data/Something.mp3';
 // import mp3_2 from '../data/Rocks_Off.flac';
 // import mp3_3 from '../data/Thriller.wma';
