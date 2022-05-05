@@ -17,7 +17,7 @@
       "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 1
+        "clicks": 7
       }
     },
     {
@@ -34,15 +34,15 @@
       "id": "0xde3ad08c3177e069551729b96235703f9fae3edc",
       "name": "Keith Richards",
       "pw": "123",
-      "membership": 1,
+      "membership": 0,
       "isArtist": 0,
       "artistDetails": {
         "clicks": 0
       }
     },
     {
-      "id": "0x80d1eaf6008f7c5a0a59e8343546f3b6a42c3728",
-      "name": "Peter",
+      "id": "0x26072575635461583493f72f74e94552a42245f5",
+      "name": "Test",
       "pw": "123",
       "membership": 1,
       "isArtist": 0,
@@ -53,11 +53,19 @@
   ],
   "music": [
     {
+      "title": "Test Song",
+      "duration": "5:59",
+      "artist": "Test Artist",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "image": "https://hallenstadion.ch/wp-content/uploads/2022/01/canstockphoto22402523-arcos-creator.com_-1024x1024-1.jpg"
+    },
+    {
       "title": "Thriller",
       "duration": "5:59",
       "artist": "Michael Jackson",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "3",
       "image": "https://www.br.de/puls/images/michael-jackson-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=fc716"
     },
     {
@@ -65,7 +73,7 @@
       "duration": "5:59",
       "artist": "Bob Dylan",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "16",
       "image": "https://m.media-amazon.com/images/I/81x8ZJqMm7L._SL1500_.jpg"
     },
     {
@@ -73,7 +81,7 @@
       "duration": "5:59",
       "artist": "David Bowie",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "13",
       "image": "https://upload.wikimedia.org/wikipedia/en/0/01/ZiggyStardust.jpg"
     },
     {
@@ -81,7 +89,7 @@
       "duration": "5:59",
       "artist": "Pink Floyd",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "17",
       "image": "https://www.br.de/puls/musik/ruhmeshalle/pink-floyd-the-dark-side-of-the-moon-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=c9487"
     },
     {
@@ -89,7 +97,7 @@
       "duration": "5:59",
       "artist": "Fleetwood Mac",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "5",
       "image": "https://i.scdn.co/image/ab67616d0000b2730001af4f80be77069fc8fd41"
     },
     {
@@ -97,7 +105,7 @@
       "duration": "5:59",
       "artist": "The Rolling Stones",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "2",
       "image": "https://m.media-amazon.com/images/I/81iYdOXSwwL._SL1400_.jpg"
     },
     {
@@ -105,80 +113,96 @@
       "duration": "5:59",
       "artist": "The Beatles",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "url": "1",
       "image": "https://www.tagesspiegel.de/images/members-of-the-beatles-cross-abbey-road-in-london/24883714/1-format43.jpg"
     },
     {
-      "title": "Shakira",
+      "title": "Brown Sugar",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "The Rolling Stones",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/en/3/35/Shakira_-_Shakira_%282014%29.png"
+      "url": "4",
+      "image": "https://m.media-amazon.com/images/I/71biD0lQgyL._SX522_.jpg"
     },
     {
-      "title": "Adele 21",
+      "title": "Fat Bottomed Girls",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "Queen",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/fi/5/51/Adele21albumikansi.jpg"
+      "url": "7",
+      "image": "https://blob.cede.ch/catalog/101027000/101027010_1_92.jpg?v=1"
     },
     {
-      "title": "Strange Clouds",
+      "title": "Don't You (Forget About Me)",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "Simple Minds",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/en/6/69/B.o.B_-_Strange_Clouds_-_LP_Cover.jpg"
+      "url": "6",
+      "image": "https://upload.wikimedia.org/wikipedia/en/9/94/Dont_You_Forget_About_Me_%28alternative_cover%29.jpg"
     },
     {
-      "title": "Arctic Monkeys",
+      "title": "Hotel California",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "The Eagles",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://i.pinimg.com/originals/c1/83/44/c1834474ec73e7faa475d68fdd791a48.jpg"
+      "url": "8",
+      "image": "https://velona-records.com/wp-content/uploads/2021/11/71sxlkhz8L._SL1425_.jpg"
     },
     {
-      "title": "My Everything",
+      "title": "Murder Incorporated",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "Bruce Springsteen",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/en/d/d5/Ariana_Grande_My_Everything_2014_album_artwork.png"
+      "url": "9",
+      "image": "https://exlibris.azureedge.net/covers/5099/7478/5552/8/5099747855528xxl.webp"
     },
     {
-      "title": "Have A Nice Day",
+      "title": "My Sweet Lord",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "George Harrison",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/de/thumb/e/e5/Bon_Jovi_Have_a_Nice_Day.svg/1200px-Bon_Jovi_Have_a_Nice_Day.svg.png"
+      "url": "10",
+      "image": "https://static.qobuz.com/images/covers/56/77/0060254717756_600.jpg"
     },
     {
-      "title": "Happier",
+      "title": "Riding with the King",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "B.B. King & Eric Clapton",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/en/e/e5/Marshmello_and_Bastille_Happier.png"
+      "url": "11",
+      "image": "https://assets.thalia.media/img/artikel/8bf2691ec700899d8e1dc772c1f17bebb8da797e-00-00.jpeg"
     },
     {
-      "title": "Stoney",
+      "title": "So Far Away",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "Dire Straits",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/fi/d/d9/Post_Malone_Stoney.jpg"
+      "url": "12",
+      "image": "https://upload.wikimedia.org/wikipedia/en/6/67/DS_Brothers_in_Arms.jpg"
     },
     {
-      "title": "The Eminem Show",
+      "title": "Stuck In The Middle With You",
       "duration": "5:59",
-      "artist": "Michael Jackson",
+      "artist": "The Wheelers",
       "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
-      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
-      "image": "https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg"
+      "url": "14",
+      "image": "https://i.scdn.co/image/ab67616d0000b273a5ce236c22035a02cf87d4de"
+    },
+    {
+      "title": "Take_The_Long_Way_Home",
+      "duration": "5:59",
+      "artist": "Supertramp",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "15",
+      "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/Supertramp_-_Breakfast_in_America.jpg"
+    },
+    {
+      "title": "Tiny Dancer",
+      "duration": "5:59",
+      "artist": "Elton John",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "18",
+      "image": "https://upload.wikimedia.org/wikipedia/en/d/d4/Elton_John_-_Madman_Across_the_Water.jpg"
     }
   ]
 }

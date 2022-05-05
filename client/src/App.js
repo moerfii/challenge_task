@@ -14,7 +14,6 @@ import Logo from "./images/Logo.png";
 const {Footer, Sider, Content} = Layout;
 
 
-
 const App = () => {
 
   const [song, setSong] = useState();
@@ -25,6 +24,13 @@ const App = () => {
     }
     console.log("App started");
   }, []);
+
+  const logout = () => {
+    console.log("logout");
+    save_local_storage("authenticated", 0);
+    save_local_storage("id", null);
+    window.location.reload(false);
+  }
   
   if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
     return(
@@ -75,7 +81,10 @@ const App = () => {
             <p style={window.location.pathname === "/account"? {color: "#1d2ab9"} : 
               {color: "#ffffff"}}> My Account</p>
           </Link>
-          
+          <div className='recentPlayed' onClick={logout}>
+          <div className='install' >
+            <span style={{color: "#bfbfbf"}}>Logout</span>
+          </div></div>
         </Sider>
         <Content>
           <Routes>

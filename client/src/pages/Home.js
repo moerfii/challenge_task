@@ -24,7 +24,6 @@ const Home = () => {
   };
   
   useEffect(() => {
-   
     get_artists().then((tx) => {
       console.log(tx);
       setArtists(tx);
@@ -102,10 +101,19 @@ const Home = () => {
         <h1 className='featuredTitle'>
           Pear-to-Pear Music
         </h1>
+        <h2 className='welcomeMsg'>
+          {"Welcome " + JSON.parse(read_local_storage("id")).name + ", enjoy your music!"}
+        </h2>
         {loading ? Loader() :
         <div>
-        {subscribed ? null : <div className='subscriptionButton' onClick={() => buy_abo()}>
+        {subscribed ? null : 
+        <div>
+        <div className='subscriptionButton' onClick={() => buy_abo()}>
           Subscribe
+        </div>
+        <h2 className='aboInfo'>
+        {"Subscribe today for only a monthly 0.00000001ETH and start listening to all the music."}
+        </h2>
         </div>
         }
           <div className='albums'>
@@ -115,7 +123,7 @@ const Home = () => {
                 </img>
                 <p>{e.title}</p>
                 {subscribed ? <div className='purchaseButtonHome' >
-                  Songs
+                  Play
                 </div> : null}
               </Link>
             ))}
