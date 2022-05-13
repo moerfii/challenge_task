@@ -19,6 +19,8 @@ function Account() {
   const [pw, setPw] = useState(JSON.parse(read_local_storage("id")).pw);
   const [artistId, setArtistId] = useState(JSON.parse(read_local_storage("id")).id);
   const [loading, setLoading] = useState(true);
+  const [infoSet, setInfoSet] = useState(false);
+  const [songSet, setSongSet] = useState([0,0,0]);
   const [music, setMusic] = useState([]);
   const [moneyPool, setMoneyPool] = useState(0);
   const [url, setUrl] = useState("");
@@ -28,7 +30,7 @@ function Account() {
   useEffect(() => {
     get_current_moneypool().then((data) => {
       console.log("Data fetched: " + data);
-      setMoneyPool(data);
+      setMoneyPool(data/1000000000);
       get_music().then((data) => {
         console.log("Music data fetched: " + data[0]);
         setMusic(data);
@@ -41,7 +43,7 @@ function Account() {
     });
   }, []);
 
-  const payout = () => {
+  const call_payout = () => {
     setLoading(true);
     var artist_ids = [];
     var artists_clicks = [];
@@ -55,21 +57,46 @@ function Account() {
         }
       }
       console.log(artist_ids);
-      console.log(artists_clicks);
-      /**payout(artistId, artist_ids, artists_clicks).then((tx) => {
+      console.log(artists_clicks); 
+
+      payout(artist_ids, artists_clicks).then((tx) => {
         console.log(tx);
-        setLoading(false);
+        resetClicks(artist_ids, data).then((res) => {
+          setLoading(false);
+        }).catch((error) => {
+          console.log(error);
+        });
       }).catch((error) => {
         console.log(error);
-      });*/
-      setLoading(false);
+      });
+
     }).catch((error) => {
       console.log(error);
     });
+  }
 
-    
-   
-    
+  const resetClicks = async (data, data2) => {
+    for (let i = 0; i < data.length; i++) {
+      const artist = data[i];
+      for (let j = 0; j < data2.length; j++) {
+        const a = data2[j];
+        if(a.id == artist){
+          const request = {
+            "id": a.id,
+            "name": a.name,
+            "pw": a.pw,
+            "membership": a.membership,
+            "isArtist": a.isArtist,
+            "artistDetails":{
+                "clicks": 0,
+                "salary": a.artistDetails.clicks
+            }
+          };
+          const response = await api.put(`/users/${artist}`, request);
+          console.log(response.data);
+        }
+      }
+    }
   }
 
   const get_artists = async () => {
@@ -87,10 +114,12 @@ function Account() {
   };
 
   const change = (event) => {
+    setInfoSet(true);
     setUsername(event.target.value);
   }
 
   const changePw = (event) => {
+    setInfoSet(true);
     setPw(event.target.value);
   }
 
@@ -102,7 +131,8 @@ function Account() {
       "membership": data.membership,
       "isArtist": data.isArtist,
       "artistDetails":{
-          "clicks": data.artistDetails.clicks
+          "clicks": data.artistDetails.clicks,
+          "salary": data.artistDetails.salary
       }
     };
     const response = await api.put(`/users/${data.id}`, request);
@@ -120,14 +150,17 @@ function Account() {
   }
 
   const changeTitle = (event) => {
+    songSet[0] = 1;
     setTitle(event.target.value);
   }
 
   const changeUrl = (event) => {
+    songSet[1] = 1;
     setUrl(event.target.value);
   }
 
   const changeImg = (event) => {
+    songSet[2] = 1;
     setImg(event.target.value);
   }
 
@@ -158,7 +191,7 @@ function Account() {
     });
   }
 
-  if(1!=1 /**isArtist==0 || isArtist== undefined)*/){
+  if(isArtist==0 || isArtist== undefined){
     return (
     <>
     <div style={{
@@ -191,15 +224,25 @@ function Account() {
             </div>
           </form>
         </div>
-        <div className='saveButton' onClick={() => save()}>
-        Save Updates
-        </div>
+        {infoSet ?
+          <div className='saveButton' onClick={() => save()}>
+          Save Updates
+          </div> :
+          <div className='saveButtonDeactivated'>
+          Save Updates
+          </div>
+        }
         <div className='deleteButton' onClick={() => console.log("delete")}>
         Delete Account
         </div>
-        <div className='payoutButton' onClick={() => payout()}>
-        Test Payout
-        </div>
+        {moneyPool >= 0 ?
+          <div className='payoutButton' onClick={() => call_payout()}>
+          Test Payout
+          </div> :
+          <div className='saveButtonDeactivated'>
+          Test Payout
+          </div>
+        }
       </div>
     }
     </>
@@ -239,19 +282,29 @@ function Account() {
               </div>
             </form>
           </div>
+          {infoSet ?
           <div className='saveButton' onClick={() => save()}>
           Save Updates
+          </div> :
+          <div className='saveButtonDeactivated'>
+          Save Updates
           </div>
+          }
           <div>
             <h1 className="welcomeMsg">
               Current # of clicks: {clicks}
             </h1>
             <h1 className="welcomeMsg">
-                Current Moneypool: {moneyPool} Wei
+              Current Moneypool: {moneyPool} Gwei
             </h1>
-            <div className='payoutButton' onClick={() => payout()}>
+            {moneyPool >= 0 ?
+            <div className='payoutButton' onClick={() => call_payout()}>
+            Test Payout
+            </div> :
+            <div className='saveButtonDeactivated'>
             Test Payout
             </div>
+            }
             <div className="container">
             <MultiLineChart />
             </div>
@@ -281,9 +334,14 @@ function Account() {
                 </div>
               </form>
             </div>
+            {songSet[0]==1 && songSet[1]==1 && songSet[2]==1 ? 
             <div className='payoutButton' onClick={() => saveSong()}>
               Upload Song
+            </div> : 
+            <div className='saveButtonDeactivated'>
+              Upload Song
             </div>
+            }
             <h1 className="welcomeMsg">
               My Music
             </h1>

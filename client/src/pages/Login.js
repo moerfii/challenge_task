@@ -1,7 +1,7 @@
 import React, { useState }from 'react';
 import Loader from '../helpers/Loader';
 import { register_user, get_artists, register_artist } from '../web3/Web3Service';
-import { save_local_storage, read_local_storage } from '../helpers/localStorage';
+import { save_local_storage } from '../helpers/localStorage';
 import "./Login.css";
 import {Tabs} from "antd";
 import api from '../helpers/api.js';
@@ -48,7 +48,8 @@ const Login = () => {
       "membership": 0,
       "isArtist": isArtist,
       "artistDetails":{
-          "clicks": 0
+          "clicks": 0,
+          "salary": []
       }
     };
     const response = await api.post("/users", request);
@@ -64,7 +65,8 @@ const Login = () => {
       "membership": 0,
       "isArtist": 1,
       "artistDetails":{
-          "clicks": 0
+          "clicks": 0,
+          "salary": []
       }
     };
     const response = await api.put(`/users/${request.id}`, request);

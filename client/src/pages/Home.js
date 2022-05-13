@@ -5,7 +5,7 @@ import {Tabs} from "antd";
 import Loader from '../helpers/Loader';
 import api from '../helpers/api.js';
 import { save_local_storage, read_local_storage } from '../helpers/localStorage';
-import { get_artists, buy_membership, get_abo_price, set_abo_price, validate_abo } from '../web3/Web3Service';
+import { get_artists, buy_membership, get_abo_price, validate_abo } from '../web3/Web3Service';
 
 const {TabPane} = Tabs;
 
@@ -70,7 +70,8 @@ const Home = () => {
       "membership": valid,
       "isArtist": data.isArtist,
       "artistDetails":{
-          "clicks": data.artistDetails.clicks
+          "clicks": data.artistDetails.clicks,
+          "salary": data.artistDetails.salary
       }
     };
     const response = await api.put(`/users/${data.id}`, request);

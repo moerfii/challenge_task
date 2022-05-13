@@ -7,8 +7,8 @@ let musicFactoryContract;
 
 let setupDone = false;
 
-const local_contract_address = "0x5481eA7bc9EAd3361A95eC7447Bd7Ee27495CAbA";
-const local_account = "0x26072575635461583493f72F74e94552A42245F5";
+const local_contract_address = "0xbc6429437E8060AA17692759230155E2Cf57D6DD";
+const local_account = "0xc7C1FffF5dFE15826A402c709e704Fe0CD979d3D";
 
 export const init = async () => {
     let provider = window.ethereum;
@@ -107,11 +107,11 @@ export const set_payout_period = async (period) => {
     return musicFactoryContract.methods.set_payout_period(period).send({from: local_account});
 }
 
-export const payout = async (address, artist_ids, clicks) => {
+export const payout = async (artist_ids, clicks) => {
     if (!setupDone){
         await init();
     }
-    return musicFactoryContract.methods.payout(artist_ids, clicks).send({from: address});
+    return musicFactoryContract.methods.payout(artist_ids, clicks).send({from: local_account});
 }
 
 export const validate_abo = async (address) => {

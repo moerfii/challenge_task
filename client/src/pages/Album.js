@@ -35,10 +35,6 @@ const Album = ({setSong}) => {
       "synced_at": "2022-03-04T09:06:55.133Z"
   }
 ]*/
-
-
-  //add smart contract call here later...
-  const response = [];
   
   return (
   <>
@@ -65,12 +61,9 @@ const Album = ({setSong}) => {
       <div className='titleHeader'>TITLE</div>
       <div className='numberHeader'><ClockCircleOutlined/></div>
     </div>
-      <div className="tableContent">
+      <div className="tableContent" style={{ color: "rgb(205, 203, 203)" }}>
         <div className="numberHeader">{1}</div>
-        <div
-          className="titleHeader"
-          style={{ color: "rgb(205, 203, 203)" }}
-        >
+        <div className="titleHeader">
           {song.title}
         </div>
         <div className="numberHeader">{song.duration}</div>
