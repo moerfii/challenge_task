@@ -167,12 +167,12 @@ function Account() {
   const newSong = async (data) => {
     const request = {
       id: 1,
-      artist: "Test",
-      artistId: "0x26072575635461583493f72f74e94552a42245f5",
+      artist: username,
+      artistId: data.id,
       duration: "3:00",
-      image: "aa",
-      title: "td ed",
-      url: "aa"
+      image: img,
+      title: title,
+      url: url
     };
     console.log(request);
     const response = await api.post("/music", request);

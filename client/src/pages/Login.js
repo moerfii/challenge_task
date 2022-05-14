@@ -49,7 +49,7 @@ const Login = () => {
       "isArtist": isArtist,
       "artistDetails":{
           "clicks": 0,
-          "salary": []
+          "salary": 0
       }
     };
     const response = await api.post("/users", request);
@@ -66,7 +66,7 @@ const Login = () => {
       "isArtist": 1,
       "artistDetails":{
           "clicks": 0,
-          "salary": []
+          "salary": 0
       }
     };
     const response = await api.put(`/users/${request.id}`, request);
