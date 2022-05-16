@@ -9,6 +9,16 @@
   margin-bottom: 30px;
 }
 
+.welcomeMsg {
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
 .albums {
   display: flex;
   flex-wrap: wrap;
@@ -59,9 +69,9 @@
   border-radius: 25px;
   letter-spacing: 1.5px;
   transition: transform 0.4s;
-  width: 200px;
+  width: 170px;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   margin-left: 45%;
   margin-right: 50%;
@@ -75,4 +85,77 @@
 .payoutButton:hover {
   cursor: pointer;
   transform: scale(1.05);;
+}
+
+.deleteButton {
+  padding: 15px;
+  background-color: #b91818; 
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+  width: 170px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 45%;
+  margin-right: 50%;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+  transform: scale(1.05);;
+}
+
+.saveButton {
+  padding: 15px;
+  background-color: #2d3bd6; 
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+  width: 170px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 45%;
+  margin-right: 50%;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+.saveButtonDeactivated {
+  padding: 15px;
+  background-color: #777777; 
+  border-radius: 25px;
+  letter-spacing: 1.5px;
+  transition: transform 0.4s;
+  width: 170px;
+  color: rgb(172, 172, 172);
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 45%;
+  margin-right: 50%;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  opacity: .5;
+}
+
+.saveButton:hover {
+  cursor: pointer;
+  transform: scale(1.05);;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
 }

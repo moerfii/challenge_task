@@ -1,44 +1,231 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": "0x4d1bf345779F39EC7b90B6266F6d298f6bF76714",
       "name": "Bob Dylan",
       "pw": "111",
-      "membership": 1,
+      "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 0
+        "clicks": 0,
+        "salary": 1
       }
     },
     {
-      "id": 1,
+      "id": "0xf29AA50840db31d6B8d984832aEABfF71D0ed7fc",
       "name": "Michael Jackson",
       "pw": "222",
       "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 0
+        "clicks": 0,
+        "salary": []
       }
     },
     {
-      "id": 2,
+      "id": "0x285c4A13fa81a6ADBA054068e38eeF41A7F6bCe9",
       "name": "Mick Jagger",
       "pw": "123",
       "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 0
+        "clicks": 0,
+        "salary": 2
       }
     },
     {
-      "id": 3,
-      "name": "Mark Knopfler",
+      "id": "0x65704f6D82224439dBa9CF473c8e2d4C1BC6c306",
+      "name": "Test2",
       "pw": "123",
-      "membership": 1,
-      "isArtist": 1,
+      "membership": 0,
+      "isArtist": 0,
+      "artistDetails": {
+        "clicks": 0,
+        "salary": []
+      }
+    },
+    {
+      "id": "0xc7C1FffF5dFE15826A402c709e704Fe0CD979d3D",
+      "name": "Test",
+      "pw": "123",
+      "membership": 0,
+      "isArtist": 0,
       "artistDetails": {
         "clicks": 0
       }
+    }
+  ],
+  "music": [
+    {
+      "id": 0,
+      "title": "Test Song",
+      "duration": "5:59",
+      "artist": "Test Artist",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
+      "image": "https://hallenstadion.ch/wp-content/uploads/2022/01/canstockphoto22402523-arcos-creator.com_-1024x1024-1.jpg"
+    },
+    {
+      "id": 1,
+      "title": "Thriller",
+      "duration": "5:59",
+      "artist": "Michael Jackson",
+      "artistId": "0xf29AA50840db31d6B8d984832aEABfF71D0ed7fc",
+      "url": "3",
+      "image": "https://www.br.de/puls/images/michael-jackson-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=fc716"
+    },
+    {
+      "id": 2,
+      "title": "Tangled Up in Blue",
+      "duration": "5:59",
+      "artist": "Bob Dylan",
+      "artistId": "0x4d1bf345779F39EC7b90B6266F6d298f6bF76714",
+      "url": "16",
+      "image": "https://m.media-amazon.com/images/I/81x8ZJqMm7L._SL1500_.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Space Oddity",
+      "duration": "5:59",
+      "artist": "David Bowie",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "13",
+      "image": "https://upload.wikimedia.org/wikipedia/en/0/01/ZiggyStardust.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Time",
+      "duration": "5:59",
+      "artist": "Pink Floyd",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "17",
+      "image": "https://www.br.de/puls/musik/ruhmeshalle/pink-floyd-the-dark-side-of-the-moon-100~_v-img__1__1__xl_-fc0f2c4a90a5ebfa79f56bc1c9c6a86c876e2a3c.jpg?version=c9487"
+    },
+    {
+      "id": 5,
+      "title": "Don't Stop",
+      "duration": "5:59",
+      "artist": "Fleetwood Mac",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "5",
+      "image": "https://i.scdn.co/image/ab67616d0000b2730001af4f80be77069fc8fd41"
+    },
+    {
+      "id": 6,
+      "title": "Rocks Off",
+      "duration": "5:59",
+      "artist": "The Rolling Stones",
+      "artistId": "0x285c4A13fa81a6ADBA054068e38eeF41A7F6bCe9",
+      "url": "2",
+      "image": "https://m.media-amazon.com/images/I/81iYdOXSwwL._SL1400_.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Something",
+      "duration": "5:59",
+      "artist": "The Beatles",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "1",
+      "image": "https://www.tagesspiegel.de/images/members-of-the-beatles-cross-abbey-road-in-london/24883714/1-format43.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Brown Sugar",
+      "duration": "5:59",
+      "artist": "The Rolling Stones",
+      "artistId": "0x285c4A13fa81a6ADBA054068e38eeF41A7F6bCe9",
+      "url": "4",
+      "image": "https://m.media-amazon.com/images/I/71biD0lQgyL._SX522_.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Fat Bottomed Girls",
+      "duration": "5:59",
+      "artist": "Queen",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "7",
+      "image": "https://blob.cede.ch/catalog/101027000/101027010_1_92.jpg?v=1"
+    },
+    {
+      "id": 10,
+      "title": "Don't You (Forget About Me)",
+      "duration": "5:59",
+      "artist": "Simple Minds",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "6",
+      "image": "https://upload.wikimedia.org/wikipedia/en/9/94/Dont_You_Forget_About_Me_%28alternative_cover%29.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Hotel California",
+      "duration": "5:59",
+      "artist": "The Eagles",
+      "artistId": "0x26072575635461583493f72f74e94552a42245f5",
+      "url": "8",
+      "image": "https://velona-records.com/wp-content/uploads/2021/11/71sxlkhz8L._SL1425_.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Murder Incorporated",
+      "duration": "5:59",
+      "artist": "Bruce Springsteen",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "9",
+      "image": "https://exlibris.azureedge.net/covers/5099/7478/5552/8/5099747855528xxl.webp"
+    },
+    {
+      "id": 13,
+      "title": "My Sweet Lord",
+      "duration": "5:59",
+      "artist": "George Harrison",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "10",
+      "image": "https://static.qobuz.com/images/covers/56/77/0060254717756_600.jpg"
+    },
+    {
+      "id": 14,
+      "title": "Riding with the King",
+      "duration": "5:59",
+      "artist": "B.B. King & Eric Clapton",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "11",
+      "image": "https://assets.thalia.media/img/artikel/8bf2691ec700899d8e1dc772c1f17bebb8da797e-00-00.jpeg"
+    },
+    {
+      "id": 15,
+      "title": "So Far Away",
+      "duration": "5:59",
+      "artist": "Dire Straits",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "12",
+      "image": "https://upload.wikimedia.org/wikipedia/en/6/67/DS_Brothers_in_Arms.jpg"
+    },
+    {
+      "id": 16,
+      "title": "Stuck In The Middle With You",
+      "duration": "5:59",
+      "artist": "The Wheelers",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "14",
+      "image": "https://i.scdn.co/image/ab67616d0000b273a5ce236c22035a02cf87d4de"
+    },
+    {
+      "id": 17,
+      "title": "Take_The_Long_Way_Home",
+      "duration": "5:59",
+      "artist": "Supertramp",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "15",
+      "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/Supertramp_-_Breakfast_in_America.jpg"
+    },
+    {
+      "id": 18,
+      "title": "Tiny Dancer",
+      "duration": "5:59",
+      "artist": "Elton John",
+      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "url": "18",
+      "image": "https://upload.wikimedia.org/wikipedia/en/d/d4/Elton_John_-_Madman_Across_the_Water.jpg"
     }
   ]
 }

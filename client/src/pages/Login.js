@@ -1,8 +1,7 @@
 import React, { useState }from 'react';
-import database from '../data/data';
 import Loader from '../helpers/Loader';
 import { register_user, get_artists, register_artist } from '../web3/Web3Service';
-import { save_local_storage, read_local_storage } from '../helpers/localStorage';
+import { save_local_storage } from '../helpers/localStorage';
 import "./Login.css";
 import {Tabs} from "antd";
 import api from '../helpers/api.js';
@@ -41,15 +40,16 @@ const Login = () => {
     return response.data;
   };
 
-  const addUser = async (name, pw, isArtist) => {
+  const addUser = async (address, name, pw, isArtist) => {
     const request = {
-      "id": 0,
+      "id": address,
       "name": name,
       "pw": pw,
       "membership": 0,
       "isArtist": isArtist,
       "artistDetails":{
-          "clicks": 0
+          "clicks": 0,
+          "salary": 0
       }
     };
     const response = await api.post("/users", request);
@@ -65,7 +65,8 @@ const Login = () => {
       "membership": 0,
       "isArtist": 1,
       "artistDetails":{
-          "clicks": 0
+          "clicks": 0,
+          "salary": 0
       }
     };
     const response = await api.put(`/users/${request.id}`, request);
@@ -84,8 +85,7 @@ const Login = () => {
 
   const register = (name, pw, isArtist) => {
       register_user().then((tx) => {
-        console.log(tx);
-        addUser(name, pw, isArtist).then((tx) => {
+        addUser(tx.from, name, pw, isArtist).then((tx) => {
           save_local_storage("authenticated", 1);
           setLoading(false);
           setIsSubmitted(true);
@@ -102,7 +102,7 @@ const Login = () => {
   const register_a = (name, pw, isArtist) => {
       register_artist(name).then((tx) => {
       console.log(tx);
-      addUser(name, pw, isArtist).then((tx) => {
+      addUser(tx.from, name, pw, isArtist).then((tx) => {
         save_local_storage("authenticated", 1);
         setLoading(false);
         setIsSubmitted(true);

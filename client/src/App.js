@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {init} from './web3/Web3Service';
 import { save_local_storage, read_local_storage } from './helpers/localStorage';
 import { Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
 import Home from "./pages/Home";
@@ -15,10 +14,9 @@ import Logo from "./images/Logo.png";
 const {Footer, Sider, Content} = Layout;
 
 
-
 const App = () => {
 
-  //const [Album, setAlbum] = useState();
+  const [song, setSong] = useState();
 
   useEffect(() => {
     if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
@@ -26,6 +24,13 @@ const App = () => {
     }
     console.log("App started");
   }, []);
+
+  const logout = () => {
+    console.log("logout");
+    save_local_storage("authenticated", 0);
+    save_local_storage("id", null);
+    window.location.reload(false);
+  }
   
   if(read_local_storage("authenticated")==0 || read_local_storage("authenticated")== undefined ){
     return(
@@ -76,7 +81,10 @@ const App = () => {
             <p style={window.location.pathname === "/account"? {color: "#1d2ab9"} : 
               {color: "#ffffff"}}> My Account</p>
           </Link>
-          
+          <div className='recentPlayed' onClick={logout}>
+          <div className='install' >
+            <span style={{color: "#bfbfbf"}}>Logout</span>
+          </div></div>
         </Sider>
         <Content>
           <Routes>
@@ -84,7 +92,7 @@ const App = () => {
             
             <Route path="/home" element={<Home />} />
             <Route path="/music" element={<Music />} />
-            <Route path="/album" element={<Album />} />
+            <Route path="/album" element={<Album setSong={setSong}/>} />
             <Route path="/account" element={<Account />} />
             <Route path="/login" element={<Navigate replace to="/home"/>} />
             <Route path="/" element={<Navigate replace to="/login"/>} />
@@ -95,8 +103,10 @@ const App = () => {
         </Content>
 
       </Layout>
-      <Footer className='footer'>
-        <Player />
+      <Footer className='footer' style={{justifyContent: "center"}}>
+        {song && 
+          <Player album={song}/>
+        }
       </Footer>
     </Layout>
   )
