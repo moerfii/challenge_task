@@ -4,8 +4,9 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import "./SafeMath.sol";
 import "./Ownable.sol";
+import "./BCP_informed.sol";
 
-contract MusicFactory is Ownable {
+contract MusicFactory is BCP_informed, Ownable {
 
     using SafeMath for uint256;
 
@@ -15,11 +16,21 @@ contract MusicFactory is Ownable {
     uint abo_price                      = 10 gwei;
     uint payout_period                  = 10; // 190k blocks = more or less 1 month
     uint block_number_start_period      = block.number;
+    int64 commitmentID;
+
+    constructor(
+    int64 _commitmentID,
+    address payable bcpAddress
+    ) payable BCP_informed(bcpAddress) {
+        commitmentID = _commitmentID;
+    }
 
     /* Structs */
     struct Artist {
         bool exists;
         string name;
+        int88 active;
+        uint32 orderID;
     }
 
     struct User {
@@ -34,6 +45,7 @@ contract MusicFactory is Ownable {
     /* Mappings */
     mapping (address=>User) private AddressToUser;
     mapping (address=>Artist) private AddressToArtist;
+    mapping (uint32=>address) private orderIDToAddress;
 
     /* Events */
     event newArtist(
@@ -55,12 +67,30 @@ contract MusicFactory is Ownable {
         uint salary_wei
     );
 
+    event receivedData(
+        int88 data
+    );
+
 
     /* Artist Functions */
-    function register_artist(string memory name) public {
+    function register_artist(string memory name, string memory artist_address) public payable {
         require(!AddressToArtist[msg.sender].exists, "This address has already registered as an artist");
-        AddressToArtist[msg.sender] = Artist(true, name);
-        /// check in excel sheet if artist is really artist :D (oracle)
+        uint32 _gasForMailbox = 60000;
+        uint64 _gasPriceInGwei = 5; 
+        uint256 _transactionCosts = BCP.GetTransactionCosts(
+            commitmentID,
+            _gasForMailbox,
+            _gasPriceInGwei
+        );
+        uint32 orderID = BCP.ORDER{value: _transactionCosts}(
+            commitmentID,
+            _gasForMailbox,
+            artist_address,
+            uint32(block.timestamp),
+            _gasPriceInGwei
+        );
+        AddressToArtist[msg.sender] = Artist(true, name, 0, orderID);
+        orderIDToAddress[orderID] = msg.sender;
         artists.push(AddressToArtist[msg.sender]);
         emit newArtist(name, msg.sender);
     }
@@ -141,8 +171,8 @@ contract MusicFactory is Ownable {
         payout_period = number_of_blocks;
     }
 
-    function check_artist_active(address artist_address) public view returns(bool) {
-        return AddressToArtist[artist_address].exists;
+    function check_artist_active(address artist_address) public view returns(int88) {
+        return AddressToArtist[artist_address].active;
     }
 
     function get_current_moneypool() public view returns(uint) {
@@ -173,21 +203,16 @@ contract MusicFactory is Ownable {
     function get_current_block() public view returns(uint){
         return block.number;
     }
-    /*
-    
-    function remove_artist(uint id) {
 
-        ///is there an efficient way to do this in solidity?
-    }
+    function Mailbox(uint32 _orderID, int88 _data, bool _statusFlag) override external payable onlyBCP {
+        emit receivedData(_data);
+        if (_statusFlag){
+             address ArtistAdress = orderIDToAddress[_orderID];
+             Artist storage artist = AddressToArtist[ArtistAdress];
+             artist.active = _data;
+            }
+        }
 
-    function remove_user(uint id) {
-        ///is there an efficient way to do this in solidity?
-    }
-
-    */
-
-
-
-
-
+    fallback() external payable override {}
+    receive() external payable override {}
 }
