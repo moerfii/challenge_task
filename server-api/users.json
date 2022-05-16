@@ -37,7 +37,7 @@
       "id": "0x65704f6D82224439dBa9CF473c8e2d4C1BC6c306",
       "name": "Test2",
       "pw": "123",
-      "membership": 1,
+      "membership": 0,
       "isArtist": 0,
       "artistDetails": {
         "clicks": 0,
@@ -48,7 +48,7 @@
       "id": "0xc7C1FffF5dFE15826A402c709e704Fe0CD979d3D",
       "name": "Test",
       "pw": "123",
-      "membership": 1,
+      "membership": 0,
       "isArtist": 0,
       "artistDetails": {
         "clicks": 0

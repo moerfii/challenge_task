@@ -100,7 +100,7 @@ const Home = () => {
     <Tabs defaultActiveKey="1" centered>
       <TabPane tab={subscribed ? "My Music" : "Music"} key="1">
         <h1 className='featuredTitle'>
-          Pear-to-Pear Music
+          Pearify
         </h1>
         <h2 className='welcomeMsg'>
           {"Welcome " + JSON.parse(read_local_storage("id")).name + ", enjoy your music!"}
@@ -109,12 +109,45 @@ const Home = () => {
         <div>
         {subscribed ? null : 
         <div>
-        <div className='subscriptionButton' onClick={() => buy_abo()}>
+        {/**<div className='subscriptionButton' onClick={() => buy_abo()}>
           Subscribe
+        </div>*/}
+        <h1 className="aboInfo">Pick the best plan for you</h1>
+
+        <div className="pricing-box-container">
+          <div className="pricing-box text-center">
+            <h5>Free</h5>
+            <p className="price"><sup>$</sup>0<sub>/mo</sub></p>
+            <ul className="features-list">
+              <li><strong>Limited</strong> Sample Songs</li>
+            </ul>
+            <button className="btn-primary">Subscribe</button>
+          </div>
+
+          <div className="pricing-box pricing-box-bg-image text-center">
+            <h5 style={{color:"white"}}>Standard</h5>
+            <p className="price"><sup>Gwei</sup>10<sub>/mo</sub></p>
+            <ul className="features-list">
+              <li><strong>Unlimited</strong> Music</li>
+              <li><strong>1</strong> Account</li>
+              <li><strong>Fair</strong> Artists Payout</li>
+              <li><strong>Full</strong> Support</li>
+            </ul>
+            <button className="btn-primary" onClick={() => buy_abo()}>Subscribe</button>
+          </div>
+
+          <div className="pricing-box text-center">
+            <h5>Platinum</h5>
+            <p className="price"><sup>Gwei</sup>90<sub>/yr</sub></p>
+            <ul className="features-list">
+              <li><strong>Unlimited</strong> Music</li>
+              <li><strong>5</strong> Accounts</li>
+              <li><strong>Fair</strong> Artists Payout</li>
+              <li><strong>Full</strong> Support</li>
+            </ul>
+            <button className="btn-primary">Subscribe</button>
+          </div>
         </div>
-        <h2 className='aboInfo'>
-        {"Subscribe today for only a monthly 0.00000001ETH and start listening to all the music."}
-        </h2>
         </div>
         }
           <div className='albums'>
