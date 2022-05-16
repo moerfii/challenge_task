@@ -5,6 +5,7 @@ pragma solidity >=0.8.0 <0.9.0;
 import "./SafeMath.sol";
 import "./Ownable.sol";
 import "./BCP_informed.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract MusicFactory is BCP_informed, Ownable {
 
@@ -73,8 +74,9 @@ contract MusicFactory is BCP_informed, Ownable {
 
 
     /* Artist Functions */
-    function register_artist(string memory name, string memory artist_address) public payable {
+    function register_artist(string memory name) public payable {
         require(!AddressToArtist[msg.sender].exists, "This address has already registered as an artist");
+        string memory artist_address = Strings.toHexString(uint256(uint160(msg.sender)), 20);
         uint32 _gasForMailbox = 60000;
         uint64 _gasPriceInGwei = 5; 
         uint256 _transactionCosts = BCP.GetTransactionCosts(
