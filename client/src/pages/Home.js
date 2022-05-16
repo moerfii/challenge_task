@@ -150,6 +150,9 @@ const Home = () => {
         </div>
         </div>
         }
+          <h2 className='welcomeMsg'>
+            Music Library
+          </h2>
           <div className='albums'>
             {music.map((e)=>(
               <Link to="/album" state={e} className="albumSelection">
@@ -166,10 +169,32 @@ const Home = () => {
         }
       </TabPane>
       <TabPane tab="Favorites" key="2">
-      
+        <div className='albums'>
+          {music.map((e)=>(
+            <Link to="/album" state={e} className="albumSelection">
+              <img src={e.image} style={{width:"200px", marginBottom: "10px"}}>
+              </img>
+              <p>{e.title}</p>
+              {subscribed ? <div className='purchaseButtonHome' >
+                Play
+              </div> : null}
+            </Link>
+          ))}
+        </div>
       </TabPane>
       <TabPane tab="More" key="3">
-        
+        <div className='albums'>
+          {music.map((e)=>(
+            <Link to="/album" state={e} className="albumSelection">
+              <img src={e.image} style={{width:"200px", marginBottom: "10px"}}>
+              </img>
+              <p>{e.title}</p>
+              {subscribed ? <div className='purchaseButtonHome' >
+                Play
+              </div> : null}
+            </Link>
+          ))}
+        </div>
       </TabPane>
     </Tabs>
     </>
