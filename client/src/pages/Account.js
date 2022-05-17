@@ -6,7 +6,7 @@ import api from '../helpers/api.js';
 import "./Account.css";
 import { Link } from "react-router-dom";
 import {Tabs} from "antd";
-import { get_current_moneypool, payout } from '../web3/Web3Service';
+import { get_current_moneypool, payout, check_artist_active } from '../web3/Web3Service';
 
 const {TabPane} = Tabs;
 
@@ -26,6 +26,8 @@ function Account() {
   const [url, setUrl] = useState("");
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
+  const [artist_active, setArtistActive] = useState(false);
+  
 
   useEffect(() => {
     get_current_moneypool().then((data) => {
@@ -52,12 +54,17 @@ function Account() {
       for (let i = 0; i < data.length; i++) {
         const element = data[i];
         if(element.artistDetails.clicks >= 1){
-          artist_ids.push(element.id);
-          artists_clicks.push(element.artistDetails.clicks);
+          check_artist_active(element.id).then((tx) => {
+            console.log(tx);
+            artist_ids.push(element.id);
+            artists_clicks.push(element.artistDetails.clicks);
+          }).catch((error) => {
+            console.log(error);
+          });
         }
       }
       console.log(artist_ids);
-      console.log(artists_clicks); 
+      console.log(artists_clicks);
 
       payout(artist_ids, artists_clicks).then((tx) => {
         console.log(tx);
@@ -191,7 +198,7 @@ function Account() {
     });
   }
 
-  if(isArtist!=0 || isArtist== undefined){
+  if(isArtist==0 || isArtist== undefined){
     return (
     <>
     <div style={{
@@ -275,7 +282,7 @@ function Account() {
                 <input type="password" name="pass" onChange={changePw} value={pw} required />
               </div>
               <div className="input-container">
-                <label>Membership: {subscribed ? "Yes" : "No"}</label>
+                <label>Artist Active: {artist_active ? "Yes" : "No"}</label>
               </div>
               <div className="input-container">
                 <label>Artist: {isArtist ? "Yes" : "No"}</label>

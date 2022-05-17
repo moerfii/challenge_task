@@ -85,6 +85,7 @@ const Login = () => {
 
   const register = (name, pw, isArtist) => {
       register_user().then((tx) => {
+        console.log(tx);
         addUser(tx.from, name, pw, isArtist).then((tx) => {
           save_local_storage("authenticated", 1);
           setLoading(false);

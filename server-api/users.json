@@ -53,17 +53,6 @@
       "artistDetails": {
         "clicks": 0
       }
-    },
-    {
-      "id": "0x2e44c0b8aba332601f294698b7fd047e04a60015",
-      "name": "fdas",
-      "pw": "gdaf",
-      "membership": 0,
-      "isArtist": 1,
-      "artistDetails": {
-        "clicks": 0,
-        "salary": 0
-      }
     }
   ],
   "music": [

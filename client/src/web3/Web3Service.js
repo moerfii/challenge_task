@@ -5,15 +5,10 @@ let musicFactoryContract;
 
 let setupDone = false;
 
-<<<<<<< HEAD
-var currentAccount = "";
+let currentAccount;
 
-const local_contract_address = "0x95a511c60A2A5C40523Ee74EC1F6f7751D294a46";
-const local_account = "0x2E44c0b8ABA332601F294698B7fD047E04A60015";
-=======
-const local_contract_address = "0x7EaBa87751f989e63567aA0680EF3B88C92996C8";
-const local_account = "0x3D74B68Bf79E779D584A2062024080525F7Dcb89";
->>>>>>> 0e4e3f1551d836e1adbcf585fb678b7e90802269
+const local_contract_address = "0x10de464194D4DaB0cC7D6C4D79a192456E807d84";
+//const local_account = "0x3D74B68Bf79E779D584A2062024080525F7Dcb89";
 
 //     provider.request({method: 'eth_requestAccounts'}).then((accounts) => {
 //     currentAccount = accounts[0];
@@ -98,40 +93,36 @@ export const register_user = async () => {
     }
     console.log(setupDone);
     console.log(`Current account address is: ${currentAccount}`);
-    return musicFactoryContract.methods.register_user().send({from: currentAccount}).then(console.log)
-    .catch(console.log);    
+    return musicFactoryContract.methods.register_user().send({from: currentAccount});   
 }
 
 export const register_artist = async (name) => {
     if (!setupDone){
         await init();
     }
-<<<<<<< HEAD
-    return musicFactoryContract.methods.register_artist(name).send({from: currentAccount, value: Web3.utils.toWei("500000","gwei")});
-=======
-    return musicFactoryContract.methods.register_artist(name).send({from: local_account, value:500000*1e9});
->>>>>>> 0e4e3f1551d836e1adbcf585fb678b7e90802269
+    return musicFactoryContract.methods.register_artist(name).send({from: currentAccount, 
+        value: Web3.utils.toWei("500000","gwei")});
 }
 
 export const set_abo_price = async (price) => {
     if (!setupDone){
         await init();
     }
-    return musicFactoryContract.methods.set_abo_price(price).send({from: local_account});
+    return musicFactoryContract.methods.set_abo_price(price).send({from: currentAccount});
 }
 
 export const set_payout_period = async (period) => {
     if (!setupDone){
         await init();
     }
-    return musicFactoryContract.methods.set_payout_period(period).send({from: local_account});
+    return musicFactoryContract.methods.set_payout_period(period).send({from: currentAccount});
 }
 
 export const payout = async (artist_ids, clicks) => {
     if (!setupDone){
         await init();
     }
-    return musicFactoryContract.methods.payout(artist_ids, clicks).send({from: local_account});
+    return musicFactoryContract.methods.payout(artist_ids, clicks).send({from: currentAccount});
 }
 
 export const validate_abo = async (address) => {
@@ -139,6 +130,13 @@ export const validate_abo = async (address) => {
         await init();
     }
     return musicFactoryContract.methods.validate_abo(address).call();
+}
+
+export const check_artist_active = async (address) => {
+    if (!setupDone){
+        await init();
+    }
+    return musicFactoryContract.methods.check_artist_active(address).call();
 }
 
 export const buy_membership = async (address, price) => {
