@@ -42,11 +42,10 @@ Compile and Deploy the smart contract "main.sol":
 * Use "Run & Deploy" to deploy the contract
 * Once deployed, copy the Deployed Contract Address
 
-Add your deployed contract address and your account (from Ganache) to the client code:
+Add your deployed contract address to the client code:
 * file: "Web3Service.js"
   ```sh
   const local_contract_address = "YOUR_LOCAL_CONTRACT_ADDRESS";
-  const local_account = "YOUR_LOCAL_ACCOUNT";
   ```
   
 ### Run the client
