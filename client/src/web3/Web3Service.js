@@ -5,10 +5,15 @@ let musicFactoryContract;
 
 let setupDone = false;
 
+<<<<<<< HEAD
 var currentAccount = "";
 
 const local_contract_address = "0x95a511c60A2A5C40523Ee74EC1F6f7751D294a46";
 const local_account = "0x2E44c0b8ABA332601F294698B7fD047E04A60015";
+=======
+const local_contract_address = "0x7EaBa87751f989e63567aA0680EF3B88C92996C8";
+const local_account = "0x3D74B68Bf79E779D584A2062024080525F7Dcb89";
+>>>>>>> 0e4e3f1551d836e1adbcf585fb678b7e90802269
 
 //     provider.request({method: 'eth_requestAccounts'}).then((accounts) => {
 //     currentAccount = accounts[0];
@@ -101,7 +106,11 @@ export const register_artist = async (name) => {
     if (!setupDone){
         await init();
     }
+<<<<<<< HEAD
     return musicFactoryContract.methods.register_artist(name).send({from: currentAccount, value: Web3.utils.toWei("500000","gwei")});
+=======
+    return musicFactoryContract.methods.register_artist(name).send({from: local_account, value:500000*1e9});
+>>>>>>> 0e4e3f1551d836e1adbcf585fb678b7e90802269
 }
 
 export const set_abo_price = async (price) => {
