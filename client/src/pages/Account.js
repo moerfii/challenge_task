@@ -191,7 +191,7 @@ function Account() {
     });
   }
 
-  if(isArtist==0 || isArtist== undefined){
+  if(isArtist!=0 || isArtist== undefined){
     return (
     <>
     <div style={{
