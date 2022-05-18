@@ -36,12 +36,16 @@ function Account() {
       get_music().then((data) => {
         console.log("Music data fetched: " + data[0]);
         setMusic(data);
-        check_artist_active(JSON.parse(read_local_storage("id")).id).then((tx) => {
-          console.log(tx);
+        if(isArtist){
+          check_artist_active(JSON.parse(read_local_storage("id")).id).then((tx) => {
+            console.log(tx);
+            setLoading(false);
+          }).catch((error) => {
+            console.log(error);
+          });
+        }else{
           setLoading(false);
-        }).catch((error) => {
-          console.log(error);
-        });
+        }
       }).catch((error) => {
         console.log(error);
       });
