@@ -14,8 +14,8 @@ contract MusicFactory is BCP_informed, Ownable {
     /* global variables */
     uint current_money_pool;
     uint next_money_pool;
-    uint abo_price                      = 10 gwei;
-    uint payout_period                  = 10; // 190k blocks = more or less 1 month
+    uint abo_price                      = 500000 gwei;
+    uint payout_period                  = 190000; // 190k blocks = more or less 1 month
     uint block_number_start_period      = block.number;
     int64 commitmentID;
 
@@ -91,7 +91,7 @@ contract MusicFactory is BCP_informed, Ownable {
             uint32(block.timestamp),
             _gasPriceInGwei
         );
-        AddressToArtist[msg.sender] = Artist(true, name, 0, orderID);
+        AddressToArtist[msg.sender] = Artist(true, name, 0, orderID); //orderID
         orderIDToAddress[orderID] = msg.sender;
         artists.push(AddressToArtist[msg.sender]);
         emit newArtist(name, msg.sender);
@@ -116,7 +116,7 @@ contract MusicFactory is BCP_informed, Ownable {
         current_money_pool = current_money_pool.add(abo_price-future_money);
         next_money_pool = next_money_pool.add(future_money);
         User storage current_user = AddressToUser[msg.sender];
-        current_user.time_horizon = block.timestamp + 60 seconds; // 60 seconds for testing purposes, otherwise 30 days
+        current_user.time_horizon = block.timestamp + 30 days; // 60 seconds for testing purposes, otherwise 30 days
         emit newAbo(msg.sender, current_user.time_horizon);
     }
 
