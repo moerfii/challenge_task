@@ -270,10 +270,10 @@ const Login = () => {
         <TabPane tab="Login" key="1">
           <div className="app">
             <div className="title">Login</div>
-            <button onClick={() => test_contract_method()}>Test transaction</button>
+            {/*<button onClick={() => test_contract_method()}>Test transaction</button>
             <button onClick={() => get_users()}>Test JSON Read</button>
             <button onClick={() => addUser("Test", "111", 1)}>Test JSON Create</button>
-            <button onClick={() => updateUser()}>Test JSON Update</button>
+            <button onClick={() => updateUser()}>Test JSON Update</button>*/}
             <div className="login-form">
               {loading ? <Loader/> : (isSubmitted ? window.location.href="/home" : renderFormLogin)}
             </div>
