@@ -55,6 +55,22 @@ def get_datapoint(location):
 
 
 if __name__ == "__main__":
+    """
+    Instructions:
+
+    Add your credentials to a file credentials.txt as such:
+
+    {"pin":"0x2E44....",              ## make sure to use the address you have used in the new_sender registration process
+    "private_key":"abjf4fj....."}
+
+
+    set the test_url to a light node http connection address
+    set the test_contract address to the address of the deployed main.sol
+
+
+    run script. It will execute the last order received only. 
+    """
+
     if os.path.isfile("credentials.txt"):
         with open("credentials.txt", "r") as f3:
             credentials = json.load(f3)
@@ -72,7 +88,7 @@ if __name__ == "__main__":
     contract = web3.eth.contract(
         address=address, abi=abi)
 
-    eventfilter = contract.events.newOrder.createFilter(toBlock='latest', fromBlock=1308)
+    eventfilter = contract.events.newOrder.createFilter(toBlock='latest', fromBlock=0)
     order_events = [event for event in eventfilter.get_all_entries()]
     events = [event for event in order_events if
                 dict(event)['args']['_PIN'] in pin and dict(event)['address'] == address]
