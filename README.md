@@ -9,7 +9,7 @@ Group Poseidon:
 
 
 
-## Pearify
+# Pearify
 A decentralized music streaming platform.
 
 ## What is Pearify
@@ -18,3 +18,36 @@ In the current version of Pearify, users can purchase a monthly subscription whi
 Artists can register and log in via the GUI and get a custom page on Pearify. The registration process is completed off- and on-chain via the blockchain oracle service provided by Blockchain Presence AG (BCP), a spin-off by the University of Zurich. Once the transaction is confirmed, they can observe monthly statistics about their performance in terms of numbers of clicks and revenue generated.
 
 
+# Installation Guidelines
+## Local Database/JSON Storage
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+This is the local database/JSON storage solution of the app. Basically, it is a collection of JSON files, which are hosted locally and can be accessed by the client through axios calls (GET, POST, PUT, DELETE). It simulates a potential future centralized storage solution.
+
+### Built With
+
+The following frameworks is used:
+
+* [json-server](https://www.npmjs.com/package/json-server)
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+Install the dependencies of the client:
+* npm
+  ```sh
+  npm install npm
+  ```
+  
+### Run the client
+
+1. Start the app
+   ```sh
+   npm start
+   ```
