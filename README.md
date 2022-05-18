@@ -51,7 +51,7 @@ Install the dependencies of the client:
    ```sh
    npm start
    ```
-## Client
+## Client and SC
 
 <!-- ABOUT THE PROJECT -->
 ### About The Project
@@ -78,28 +78,22 @@ Install the dependencies of the client:
   ```sh
   npm install npm
   ```
-Install Ganache and start a local blockchain:
-* [Ganache](https://trufflesuite.com/ganache/)
+
 
 Install MetaMask for Google Chrome:
 * [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)
 
-Add a local Ganache account to MetaMask:
-* "Import Account" --> Enter secret key (from Ganache)
-* Connect the account to the local Ganache network (usually HTTP://127.0.0.1:7545) in MetaMask
+Deploy Smart Contract:
+* Call new sender and new commitment at Blockchain Presence (BCP) Oracle ("0x6771e59589774d2237c507aeda821388E5C2CC52")
+* Deploy smart contracts on Ropsten with returned commitment id and BCP address
 
-Compile and Deploy the smart contract "main.sol":
-* install the VS Code Extension "Ethereum Remix"
-* Compile the contract with "Compiler"
-* The .json files should be in the folder "artifacts" (if compiling doesn't work: make a local copy of "main.sol" and move it into the highest hierarchy of the folder structure, then compile again on the copy)
-* Use "Run & Deploy" to deploy the contract
-* Once deployed, copy the Deployed Contract Address
 
 Add your deployed contract address to the client code:
 * file: "Web3Service.js"
   ```sh
   const local_contract_address = "YOUR_LOCAL_CONTRACT_ADDRESS";
   ```
+Add addresses of verified artists to file backend/artists.json (mocking a music label server)
   
 ### Run the client
 
