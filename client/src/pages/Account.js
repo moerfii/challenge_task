@@ -6,6 +6,8 @@ import api from '../helpers/api.js';
 import "./Account.css";
 import { Link } from "react-router-dom";
 import {Tabs} from "antd";
+import check from "../images/check.png"; 
+import xmark from "../images/xmark.png"; 
 import { get_current_moneypool, payout, check_artist_active } from '../web3/Web3Service';
 
 const {TabPane} = Tabs;
@@ -18,7 +20,7 @@ function Account() {
   const [username, setUsername] = useState(JSON.parse(read_local_storage("id")).name);
   const [pw, setPw] = useState(JSON.parse(read_local_storage("id")).pw);
   const [artistId, setArtistId] = useState(JSON.parse(read_local_storage("id")).id);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [infoSet, setInfoSet] = useState(false);
   const [songSet, setSongSet] = useState([0,0,0]);
   const [music, setMusic] = useState([]);
@@ -29,33 +31,33 @@ function Account() {
   const [artist_active, setArtistActive] = useState(false);
   
 
-  useEffect(() => {
-    get_current_moneypool().then((data) => {
-      console.log("Data fetched: " + data);
-      setMoneyPool(data/1000000000);
-      get_music().then((data) => {
-        console.log("Music data fetched: " + data[0]);
-        setMusic(data);
-        if(isArtist){
-          check_artist_active(JSON.parse(read_local_storage("id")).id).then((tx) => {
-            console.log(tx);
-            if(tx==1){
-              setArtistActive(true);
-            }
-            setLoading(false);
-          }).catch((error) => {
-            console.log(error);
-          });
-        }else{
-          setLoading(false);
-        }
-      }).catch((error) => {
-        console.log(error);
-      });
-    }).catch((error) => {
-      console.log(error);
-    });
-  }, []);
+  // useEffect(() => {
+  //   get_current_moneypool().then((data) => {
+  //     console.log("Data fetched: " + data);
+  //     setMoneyPool(data/1000000000);
+  //     get_music().then((data) => {
+  //       console.log("Music data fetched: " + data[0]);
+  //       setMusic(data);
+  //       if(isArtist){
+  //         check_artist_active(JSON.parse(read_local_storage("id")).id).then((tx) => {
+  //           console.log(tx);
+  //           if(tx==1){
+  //             setArtistActive(true);
+  //           }
+  //           setLoading(false);
+  //         }).catch((error) => {
+  //           console.log(error);
+  //         });
+  //       }else{
+  //         setLoading(false);
+  //       }
+  //     }).catch((error) => {
+  //       console.log(error);
+  //     });
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   });
+  // }, []);
 
   const call_payout = async () => {
     setLoading(true);
@@ -222,7 +224,9 @@ function Account() {
               <input type="password" name="pass" onChange={changePw} value={pw} required />
             </div>
             <div className="input-container">
-              <label>Membership: {subscribed ? "Yes" : "No"}</label>
+              <label>Membership: {subscribed ? 
+              <img src={check} alt="check" style={{width:"30px"}}></img> :
+              <img src={xmark} alt="xmark" style={{width:"30px"}}></img>}</label>
             </div>
             <div className="input-container">
               <label>Artist: {isArtist ? "Yes" : "No"}</label>
@@ -280,7 +284,9 @@ function Account() {
                 <input type="password" name="pass" onChange={changePw} value={pw} required />
               </div>
               <div className="input-container">
-                <label>Artist Active: {artist_active ? "Yes" : "No"}</label>
+                <label>Artist Active: {artist_active ? 
+                <img src={check} alt="check" style={{width:"30px"}}></img> :
+                <img src={xmark} alt="xmark" style={{width:"30px"}}></img>}</label>
               </div>
               <div className="input-container">
                 <label>Artist: {isArtist ? "Yes" : "No"}</label>
