@@ -61,8 +61,8 @@
       "membership": 0,
       "isArtist": 1,
       "artistDetails": {
-        "clicks": 200,
-        "salary": 0
+        "clicks": 0,
+        "salary": 200
       }
     },
     {

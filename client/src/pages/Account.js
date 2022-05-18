@@ -61,12 +61,12 @@ function Account() {
     setLoading(true);
     var artist_ids = [];
     var artists_clicks = [];
-    data = await get_artists();
+    var data = await get_artists();
     console.log("Artists data fetched: " + data[0]);
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
       if(element.artistDetails.clicks >= 1){
-        tx = await check_artist_active(element.id);
+        var tx = await check_artist_active(element.id);
         if(tx==1){
           artist_ids.push(element.id);
           artists_clicks.push(element.artistDetails.clicks);
@@ -75,8 +75,8 @@ function Account() {
     }
       console.log(artist_ids);
       console.log(artists_clicks);
-      tx = await payout(artist_ids, artists_clicks);
-      res = await resetClicks(artist_ids, data);
+      var tx = await payout(artist_ids, artists_clicks);
+      var res = await resetClicks(artist_ids, data);
       setLoading(false);
   }
 
