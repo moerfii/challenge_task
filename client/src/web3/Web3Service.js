@@ -7,7 +7,7 @@ let setupDone = false;
 
 let currentAccount;
 
-const local_contract_address = "0x7da4595Ea6bF314C9CeCb9c41DFc4c64b0c6766f";
+const local_contract_address = "0xF20B70f1A2c8b216AD80Dae9F83bC952962dDB6d";
 //const local_account = "0x3D74B68Bf79E779D584A2062024080525F7Dcb89";
 
 //     provider.request({method: 'eth_requestAccounts'}).then((accounts) => {

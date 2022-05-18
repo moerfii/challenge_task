@@ -53,39 +53,6 @@
       "artistDetails": {
         "clicks": 200
       }
-    },
-    {
-      "id": "0x2e44c0b8aba332601f294698b7fd047e04a60015",
-      "name": "ben",
-      "pw": "123",
-      "membership": 0,
-      "isArtist": 1,
-      "artistDetails": {
-        "clicks": 0,
-        "salary": 200
-      }
-    },
-    {
-      "id": "0xa5727d7f321ae6da6b9219f7aea596f2240d08b5",
-      "name": "fdas",
-      "pw": "123",
-      "membership": 1,
-      "isArtist": 0,
-      "artistDetails": {
-        "clicks": 0,
-        "salary": 0
-      }
-    },
-    {
-      "id": "0xf62b6fec19bccdd2c0f9a881f1473a756dc91012",
-      "name": "gdas",
-      "pw": "123",
-      "membership": 1,
-      "isArtist": 0,
-      "artistDetails": {
-        "clicks": 0,
-        "salary": 0
-      }
     }
   ],
   "music": [
