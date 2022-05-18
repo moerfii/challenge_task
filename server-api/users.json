@@ -38,9 +38,9 @@
       "name": "Test2",
       "pw": "123",
       "membership": 0,
-      "isArtist": 0,
+      "isArtist": 1,
       "artistDetails": {
-        "clicks": 0,
+        "clicks": 200,
         "salary": []
       }
     },
@@ -49,17 +49,39 @@
       "name": "Test",
       "pw": "123",
       "membership": 0,
-      "isArtist": 0,
+      "isArtist": 1,
       "artistDetails": {
-        "clicks": 0
+        "clicks": 200
+      }
+    },
+    {
+      "id": "0x2e44c0b8aba332601f294698b7fd047e04a60015",
+      "name": "ben",
+      "pw": "123",
+      "membership": 0,
+      "isArtist": 1,
+      "artistDetails": {
+        "clicks": 200,
+        "salary": 0
       }
     },
     {
       "id": "0xa5727d7f321ae6da6b9219f7aea596f2240d08b5",
-      "name": "gfds",
-      "pw": "gdafdas",
-      "membership": 0,
-      "isArtist": 1,
+      "name": "fdas",
+      "pw": "123",
+      "membership": 1,
+      "isArtist": 0,
+      "artistDetails": {
+        "clicks": 0,
+        "salary": 0
+      }
+    },
+    {
+      "id": "0xf62b6fec19bccdd2c0f9a881f1473a756dc91012",
+      "name": "gdas",
+      "pw": "123",
+      "membership": 1,
+      "isArtist": 0,
       "artistDetails": {
         "clicks": 0,
         "salary": 0
@@ -72,7 +94,7 @@
       "title": "Test Song",
       "duration": "5:59",
       "artist": "Test Artist",
-      "artistId": "0xF4092e834Cd8b051a0365134f050B70c32f6Ee2d",
+      "artistId": "0x2e44c0b8aba332601f294698b7fd047e04a60015",
       "url": "https://www.bensound.com/bensound-music/bensound-memories.mp3",
       "image": "https://hallenstadion.ch/wp-content/uploads/2022/01/canstockphoto22402523-arcos-creator.com_-1024x1024-1.jpg"
     },

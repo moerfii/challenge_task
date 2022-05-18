@@ -39,7 +39,7 @@ function Account() {
         if(isArtist){
           check_artist_active(JSON.parse(read_local_storage("id")).id).then((tx) => {
             console.log(tx);
-            if(tx){
+            if(tx==1){
               setArtistActive(true);
             }
             setLoading(false);
@@ -57,43 +57,27 @@ function Account() {
     });
   }, []);
 
-  const call_payout = () => {
+  const call_payout = async () => {
     setLoading(true);
     var artist_ids = [];
     var artists_clicks = [];
-    get_artists().then((data) => {
-      console.log("Artists data fetched: " + data[0]);
-      for (let i = 0; i < data.length; i++) {
-        const element = data[i];
-        if(element.artistDetails.clicks >= 1){
-          check_artist_active(element.id).then((tx) => {
-            console.log(tx);
-            if(tx){
-              artist_ids.push(element.id);
-              artists_clicks.push(element.artistDetails.clicks);
-            }
-          }).catch((error) => {
-            console.log(error);
-          });
+    data = await get_artists();
+    console.log("Artists data fetched: " + data[0]);
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+      if(element.artistDetails.clicks >= 1){
+        tx = await check_artist_active(element.id);
+        if(tx==1){
+          artist_ids.push(element.id);
+          artists_clicks.push(element.artistDetails.clicks);
         }
       }
+    }
       console.log(artist_ids);
       console.log(artists_clicks);
-
-      payout(artist_ids, artists_clicks).then((tx) => {
-        console.log(tx);
-        resetClicks(artist_ids, data).then((res) => {
-          setLoading(false);
-        }).catch((error) => {
-          console.log(error);
-        });
-      }).catch((error) => {
-        console.log(error);
-      });
-
-    }).catch((error) => {
-      console.log(error);
-    });
+      tx = await payout(artist_ids, artists_clicks);
+      res = await resetClicks(artist_ids, data);
+      setLoading(false);
   }
 
   const resetClicks = async (data, data2) => {
