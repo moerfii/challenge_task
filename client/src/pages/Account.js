@@ -39,6 +39,9 @@ function Account() {
         if(isArtist){
           check_artist_active(JSON.parse(read_local_storage("id")).id).then((tx) => {
             console.log(tx);
+            if(tx){
+              setArtistActive(true);
+            }
             setLoading(false);
           }).catch((error) => {
             console.log(error);
@@ -65,8 +68,10 @@ function Account() {
         if(element.artistDetails.clicks >= 1){
           check_artist_active(element.id).then((tx) => {
             console.log(tx);
-            artist_ids.push(element.id);
-            artists_clicks.push(element.artistDetails.clicks);
+            if(tx){
+              artist_ids.push(element.id);
+              artists_clicks.push(element.artistDetails.clicks);
+            }
           }).catch((error) => {
             console.log(error);
           });
